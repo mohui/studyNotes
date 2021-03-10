@@ -24,13 +24,15 @@
 <p>执行 npm install</p>
 
 <h2>第一个node服务</h2>
+
+
 ```
 const http = require("http");
 
 const server = http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write('Node.js');
-    res.end('<p>Hello World</p>');
+    res.end('Hello World');
 });
 server.listen(3000);
 console.log("HTTP server is listening at port 3000.");
