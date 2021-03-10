@@ -40,3 +40,7 @@ console.log("HTTP server is listening at port 3000.");
 <p>1: 在终端中运行这个脚本时，我们会发现它并不像 Hello World 一样结束后立即退出，而是一直等待，直到按下 Ctrl + C 才会结束。
 这是因为 listen 函数中创建了事件监听器，使得 Node.js 进程不会退出事件循环
 </p>
+
+
+supervisor 可以帮助你实现这个功能，它会监视你对代码的改动，并自动重启 Node.js。使用方法很简单，
+首先使用 npm 安装 supervisor：$ npm install -g supervisor
