@@ -6,7 +6,8 @@
 [express官网](https://expressjs.com/zh-cn/)  
 [vue学习文档](https://cn.vuejs.org/v2/guide/)  
 [Element组件](https://element.eleme.cn/#/zh-CN/component/input)
-
+[VueRouter路由](https://router.vuejs.org/zh/installation.html)  
+[VueCLI](https://cli.vuejs.org/zh/guide/)
 
 ```
 // 生成package.json
