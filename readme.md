@@ -2,3 +2,4 @@
 * study2: [fs的简单应用](https://github.com/mohui/nodeStudy/blob/master/study-2.md)
 * study3: [项目笔记](https://github.com/mohui/nodeStudy/blob/master/study-3.md)
 * study4: [vue路由配置-简单](https://github.com/mohui/nodeStudy/blob/master/study-4.md)
+* study5: [vue获取数据](https://github.com/mohui/nodeStudy/blob/master/study-5.md)
