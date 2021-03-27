@@ -55,6 +55,14 @@ export default {
 </script>
 ```
 ## 表单
+>Loading 加载
+```
+v-loading="true"
+// 配合asyncComputed使用, dateList是数据
+v-loading="$asyncComputed.dataList.updating"
+```
+    
+
 > 下拉菜单
 ```
 <el-form-item label="下拉菜单：">
