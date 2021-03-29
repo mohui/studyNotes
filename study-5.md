@@ -1,6 +1,5 @@
 # vue学习笔记
 
-
 > $ 开头代表是插件
 >
 > {{}} 里面放变量
@@ -26,8 +25,7 @@ export default {
 :---|:---
 asyncComputed | 异步获取数据
 computed | 是对数据的进一步转换,后端获取的数据可能不能直接用
-```
-<script>
+```javascript
 export default {
   data() {
     return {
@@ -52,19 +50,17 @@ export default {
     }
   }
 };
-</script>
 ```
 ## 表单
->Loading 加载
+#### Loading 加载
 ```
 v-loading="true"
 // 配合asyncComputed使用, dateList是数据
 v-loading="$asyncComputed.dataList.updating"
-```
-    
+``` 
 
-> 下拉菜单
-```
+#### 下拉菜单
+```html
 <el-form-item label="下拉菜单：">
 <el-select
   clearable
@@ -82,22 +78,52 @@ v-loading="$asyncComputed.dataList.updating"
 </el-select>
 </el-form-item>
 ```
-> 按钮和点击事件
-```
+#### 按钮和点击事件
+```html
 <el-button type="primary" @click="add">大面积</el-button>
 ```
-```
-data() {
-    return {
-        value2: 1
+```javascript
+export default {
+    data() {
+        return {
+            value2: 1
+        }
+    },
+    methods: {
+        add() {
+          this.value2 = this.value2 + 1;
+        },
+        onSubmit() {
+          console.log('submit!');
+        }
     }
 }
-methods: {
-    add() {
-      this.value2 = this.value2 + 1;
+```
+####  DatePicker 日期选择器
+```html
+<div class="block">
+  <el-date-picker
+    size="mini"
+    v-model="date"
+    type="daterange"
+    range-separator="至"
+    start-placeholder="开始日期"
+    end-placeholder="结束日期">
+  </el-date-picker>
+</div>
+```
+```javascript
+export default {
+    async created() {
+        // 设置默认值
+        const end = dayjs(dayjs().format('YYYY-MM-DD')).subtract(1, "day").toDate();
+        const start = dayjs(end).subtract(7, "day").toDate();
+        this.date = [start,end];
     },
-    onSubmit() {
-      console.log('submit!');
+    data() {
+        return {
+          date: ''
+        }
     }
-  }
+}
 ```
