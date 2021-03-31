@@ -3,7 +3,7 @@
 > $ 开头代表是插件
 >
 > {{}} 里面放变量
-```
+```vue
 <template>
 </template>
 
@@ -15,9 +15,11 @@ export default {
     };
   }
 }
-<script>
+</script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
 ```
 ## 获取数据
 
