@@ -4,7 +4,7 @@
 :---|:---
 [获取数据](#获取数据) |
 [表单](#表单) |
-[Loading 加载](#Loading加载) |
+[Loading 加载](#Loading) |
 [下拉菜单](#下拉菜单) |
 [按钮和点击事件](#按钮和点击事件) |
 [日期选择器](#日期选择器) |
@@ -65,7 +65,7 @@ export default {
 };
 ```
 ## 表单
-#### Loading 加载
+#### Loading
 ```
 v-loading="true"
 // 配合asyncComputed使用, dateList是数据
