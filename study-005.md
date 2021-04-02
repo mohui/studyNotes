@@ -1,5 +1,7 @@
 # vue学习笔记
-[获取数据](#获取数据)
+[获取数据](#获取数据)  
+[表单](#表单)  
+[日期选择器](#日期选择器)  
 
 > $ 开头代表是插件
 >
@@ -144,7 +146,8 @@ export default {
     }
 }
 ```
-####  DatePicker 日期选择器
+#### 日期选择器
+> DatePicker
 ```html
 <div class="block">
   <el-date-picker
