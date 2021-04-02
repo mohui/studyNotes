@@ -5,7 +5,7 @@
 * study5: [vue获取数据](https://github.com/mohui/nodeStudy/blob/master/study-5.md)
 * study6: [Element表单](https://github.com/mohui/nodeStudy/blob/master/study-6.md)
 
- string1: [字符串应用](https://github.com/mohui/nodeStudy/blob/master/string-1.md)
+ string1: [字符串应用](https://github.com/mohui/nodeStudy/blob/master/string-001.md)
 
 
 [廖雪峰git文档](https://www.liaoxuefeng.com/wiki/896043488029600/896827951938304)  
