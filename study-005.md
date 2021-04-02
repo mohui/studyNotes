@@ -1,4 +1,5 @@
 # vue学习笔记
+[获取数据](#-1)
 
 > $ 开头代表是插件
 >
@@ -21,7 +22,7 @@ export default {
 
 </style>
 ```
-## 获取数据
+## 获取数据 {#1}
 
 关键字|说明
 :---|:---
@@ -38,7 +39,9 @@ export default {
           name: '王小虎',
           address: '上海市普陀区金沙江路 1518 弄'
         }
-      ]
+      ],
+      // 配置文件里获取
+      list: this.$settings.allLevelHospitals
     };
   },
   asyncComputed: {
@@ -79,6 +82,46 @@ v-loading="$asyncComputed.dataList.updating"
   </el-option>
 </el-select>
 </el-form-item>
+<!-- 另一种形式的下拉菜单-->
+<el-col :span="6" :xs="24" :sm="12" :md="6" :lg="7" :xl="6">
+    <el-form-item v-if="!single">
+      <div style="display: flex">
+        <el-cascader
+          size="mini"
+          v-model="params.hospitalId"
+          :options="allLevelHospitals"
+          :props="hospitalsOption"
+          :placeholder="'请选择地区'"
+          style="width: 100%"
+          clearable
+          collapse-tags
+          :show-all-levels="false"
+          filterable
+        ></el-cascader>
+      </div>
+    </el-form-item>
+</el-col>
+```
+```javascript
+export default{
+    data() {
+        return {
+              // 地区
+              hospitalsOption: {
+                lazy: false,
+                multiple: false,
+                checkStrictly: true,
+                emitPath: false,
+                value: 'id',
+                label: 'name'
+              },
+              allLevelHospitals: this.$settings.allLevelHospitals,
+              params: {
+                hospitalId: ""
+              },
+        }
+    }
+}
 ```
 #### 按钮和点击事件
 ```html
