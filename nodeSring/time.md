@@ -14,3 +14,15 @@ const yearStartDay = current.diff(dayjs().startOf('year'), "day");
 // 一年还剩余多少天
 const yearEndDay = dayjs().endOf('year').diff(current, "day");
 ```
+## 季度的用法
+```javascript
+// 引入季度的插件
+import * as quarterOfYear from "dayjs/plugin/quarterOfYear"
+dayjs.extend(quarterOfYear)
+// 获取当前属于哪一个季度
+const quarter = dayjs().quarter();
+// 当前季度的结束时间
+const currentQuarterEnd = dayjs().quarter(quarter).endOf('quarter');
+// 当前季度剩余天数
+const quarterEndDay = currentQuarterEnd.diff(current, "day") + 1;
+```
