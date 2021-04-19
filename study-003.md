@@ -15,3 +15,13 @@ $ npm init
 // 创建脚手架
 $ npx express-generator
 ```
+
+```javascript
+// 引用其他方法
+import SystemArea from './system_area';
+// 实例化接口
+const api = new SystemArea();
+// 调用其他接口
+const areaBudgetModels = await api.rank(code, year);
+
+```
