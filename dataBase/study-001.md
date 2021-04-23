@@ -10,14 +10,16 @@ DROP TABLE test;
 CREATE TABLE IF NOT EXISTS "test"
 (
     "id"       VARCHAR(36) PRIMARY KEY,
+    "year"          int,
     "test_name"     VARCHAR(50),
-    "test_year"     VARCHAR(50),
+    "money"         numeric(15, 4)           default 0,
     "created_at" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     "updated_at" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 COMMENT ON COLUMN "test"."id" IS '主键id';
 COMMENT ON COLUMN "test"."test_name" IS '名字';
-COMMENT ON COLUMN "test"."test_year" IS '出生日期';
+COMMENT ON COLUMN "test"."year" IS '年份';
+COMMENT ON COLUMN "test"."money" IS '金额';
 ```
 # 修改字段类型
 ```sql
