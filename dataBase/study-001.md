@@ -28,7 +28,7 @@ ALTER TABLE test ALTER COLUMN test_year TYPE integer USING (test_year::integer);
 // 把数字类型改为字符串类型
 ALTER TABLE test ALTER COLUMN test_year TYPE character varying(50) USING (test_year::character varying(50));
 // flate 改为 numeric
-ALTER TABLE area_budget ALTER COLUMN budget TYPE numeric(15,4) USING (budget::numeric(15,4));
+ALTER TABLE test ALTER COLUMN money TYPE numeric(15,4) USING (money::numeric(15,4));
 
 ```
 
