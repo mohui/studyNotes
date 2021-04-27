@@ -9,7 +9,7 @@
 [VueCLI](https://cli.vuejs.org/zh/guide/)
 
 
-* study1: [第一个http服务](https://github.com/mohui/nodeStudy/blob/master/study-001.md)
+* study1: [字符串的用法](https://github.com/mohui/nodeStudy/blob/master/study-001.md)
 * study2: [fs的简单应用](https://github.com/mohui/nodeStudy/blob/master/study-002.md)
 * study3: [项目笔记](https://github.com/mohui/nodeStudy/blob/master/study-003.md)
 * study4: [空](https://github.com/mohui/nodeStudy/blob/master/study-004.md)
