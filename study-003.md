@@ -9,6 +9,8 @@
 [VueRouter路由](https://router.vuejs.org/zh/installation.html)  
 [VueCLI](https://cli.vuejs.org/zh/guide/)
 
+table  切换
+https://www.cnblogs.com/wangweizhang/p/10251758.html
 ```
 // 生成package.json
 $ npm init
