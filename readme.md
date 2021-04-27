@@ -13,7 +13,7 @@
 * study2: [fs的简单应用](https://github.com/mohui/nodeStudy/blob/master/study-002.md)
 * study3: [项目笔记](https://github.com/mohui/nodeStudy/blob/master/study-003.md)
 * study4: [空](https://github.com/mohui/nodeStudy/blob/master/study-004.md)
-* study5: [vue获取数据](https://github.com/mohui/nodeStudy/blob/master/study-005.md)
+* study5: [空](https://github.com/mohui/nodeStudy/blob/master/study-005.md)
 * study6: [中间件的应用](https://github.com/mohui/nodeStudy/blob/master/study-006.md)
 
  string1: [字符串应用](https://github.com/mohui/nodeStudy/blob/master/string-001.md)
@@ -21,7 +21,8 @@
 
  vueStudy0: [vue路由配置-简单](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-000.md)
  vueStudy1: [vue方法说明](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-001.md)
- vueStudy1: [Element表单](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-002.md)
+ vueStudy2: [Element表单](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-002.md)
+ vueStudy3: [vue获取数据](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-003.md)
 
 
 招商银行密码格式为6-8位
