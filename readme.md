@@ -14,7 +14,7 @@
 * study3: [项目笔记](https://github.com/mohui/nodeStudy/blob/master/study-003.md)
 * study4: [空](https://github.com/mohui/nodeStudy/blob/master/study-004.md)
 * study5: [vue获取数据](https://github.com/mohui/nodeStudy/blob/master/study-005.md)
-* study6: [空](https://github.com/mohui/nodeStudy/blob/master/study-006.md)
+* study6: [中间件的应用](https://github.com/mohui/nodeStudy/blob/master/study-006.md)
 
  string1: [字符串应用](https://github.com/mohui/nodeStudy/blob/master/string-001.md)
 
