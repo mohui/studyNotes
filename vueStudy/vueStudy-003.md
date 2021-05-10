@@ -1,13 +1,15 @@
-# vue学习笔记
+# vue学习笔记(vue-Element)
 
 关键字|说明
 :---|:---
+[属性](#属性) |
 [获取数据](#获取数据) |
 [表单](#表单) |
 [Loading 加载](#Loading) |
 [下拉菜单](#下拉菜单) |
 [按钮和点击事件](#按钮和点击事件) |
 [日期选择器](#日期选择器) |
+[button按钮组](#按钮组) |
 
 > $ 开头代表是插件
 >
@@ -30,6 +32,14 @@ export default {
 
 </style>
 ```
+
+## 属性
+
+关键字|说明|类型|可选值|默认值|补充说明
+:---|:---|:---|:---|:---|:---
+size | Table的尺寸 | string | medium/small/mini | — | 可以控制标题字体的大小
+
+
 ## 获取数据
 
 关键字|说明
@@ -65,6 +75,15 @@ export default {
 };
 ```
 ## 表单
+```vue
+<el-table
+      v-loading="$asyncComputed.dataList.updating"
+      :data="tableData"
+      style="width: 100%"
+      size="small">
+</el-table>
+```
+
 #### Loading
 ```
 v-loading="true"
@@ -180,4 +199,25 @@ export default {
         }
     }
 }
+```
+
+#### 按钮组
+> 高亮点击的那个, 根据变量params.selFlag判断
+```html
+<el-button-group>
+    <el-button
+        size="small"
+        :class="{'el-button--primary': params.selFlag === 'moneyList'}"
+        @click="tagTypeChanged('moneyList')"
+    >
+    实时金额
+    </el-button>
+    <el-button
+        size="small"
+        :class="{'el-button--primary': params.selFlag === 'upsertMoney'}"
+        @click="tagTypeChanged('upsertMoney')"
+    >
+    年度结算
+    </el-button>
+</el-button-group>
 ```
