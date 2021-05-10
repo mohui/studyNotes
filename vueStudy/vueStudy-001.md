@@ -1,3 +1,9 @@
+关键字|说明
+:---|:---
+[表单](#表单) |
+[属性](#属性) |
+[获取数据](#获取数据) 
+
 ### 方法说明
 关键字|解释|说明
 :---|:---|:---
@@ -35,3 +41,67 @@ export default {
 }
 ```
                    
+## 表单
+> $ 开头代表是插件
+>
+> {{}} 里面放变量
+```vue
+<template>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: "测试",
+    };
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
+```
+
+## 属性
+
+关键字|说明|类型|可选值|默认值|补充说明
+:---|:---|:---|:---|:---|:---
+size | Table的尺寸 | string | medium/small/mini | — | 可以控制标题字体的大小
+
+
+## 获取数据
+
+关键字|说明
+:---|:---
+asyncComputed | 异步获取数据
+computed | 是对数据的进一步转换,后端获取的数据可能不能直接用
+```javascript
+export default {
+  data() {
+    return {
+      name: "测试",
+      tableData: [
+        {
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }
+      ],
+      // 配置文件里获取
+      list: this.$settings.allLevelHospitals
+    };
+  },
+  asyncComputed: {
+    dataList: {
+      async get() {
+        return await this.$api.Test.test();
+      },
+      default() {
+        return [];
+      }
+    }
+  }
+};
+```
