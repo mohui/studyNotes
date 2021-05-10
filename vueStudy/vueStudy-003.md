@@ -2,79 +2,15 @@
 
 关键字|说明
 :---|:---
-[属性](#属性) |
-[获取数据](#获取数据) |
-[表单](#表单) |
+[table](#table) |
 [Loading 加载](#Loading) |
 [下拉菜单](#下拉菜单) |
 [按钮和点击事件](#按钮和点击事件) |
 [日期选择器](#日期选择器) |
 [button按钮组](#按钮组) |
 
-> $ 开头代表是插件
->
-> {{}} 里面放变量
-```vue
-<template>
-</template>
 
-<script>
-export default {
-  data() {
-    return {
-      name: "测试",
-    };
-  }
-}
-</script>
-
-<style scoped>
-
-</style>
-```
-
-## 属性
-
-关键字|说明|类型|可选值|默认值|补充说明
-:---|:---|:---|:---|:---|:---
-size | Table的尺寸 | string | medium/small/mini | — | 可以控制标题字体的大小
-
-
-## 获取数据
-
-关键字|说明
-:---|:---
-asyncComputed | 异步获取数据
-computed | 是对数据的进一步转换,后端获取的数据可能不能直接用
-```javascript
-export default {
-  data() {
-    return {
-      name: "测试",
-      tableData: [
-        {
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }
-      ],
-      // 配置文件里获取
-      list: this.$settings.allLevelHospitals
-    };
-  },
-  asyncComputed: {
-    dataList: {
-      async get() {
-        return await this.$api.Test.test();
-      },
-      default() {
-        return [];
-      }
-    }
-  }
-};
-```
-## 表单
+## table
 ```vue
 <el-table
       v-loading="$asyncComputed.dataList.updating"
