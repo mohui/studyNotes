@@ -22,7 +22,7 @@
  vueStudy0: [vue路由配置-简单](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-000.md)
  vueStudy1: [vue方法说明](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-001.md)
  vueStudy2: [Element表单](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-002.md)
- vueStudy3: [vue获取数据](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-003.md)
+ vueStudyRouter: [路由学习笔记](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-router.md)
 
 
 招商银行密码格式为6-8位
