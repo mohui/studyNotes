@@ -1,5 +1,6 @@
 # 柱状图
 ```javascript
+// https://echarts.apache.org/zh/option.html#dataZoom
 import * as echarts from 'echarts';
 
 var chartDom = document.getElementById('main');
