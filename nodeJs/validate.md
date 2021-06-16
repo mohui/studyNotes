@@ -28,7 +28,11 @@ export default class Test {
         score: should
           .number()
           .required()
-          .description('数字类型')
+          .description('数字类型'),
+      type: should
+        .string()
+        .only(HisWorkSource.CHECK, HisWorkSource.DRUG, HisWorkSource.MANUAL)
+        .description('只能传: 检查项目/药品/手工数据')
       })
       .required()
       .description('对象数组类型'),
