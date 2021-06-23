@@ -12,11 +12,6 @@
 * study1: [字符串的用法](https://github.com/mohui/nodeStudy/blob/master/study-001.md)
 * study2: [fs的简单应用](https://github.com/mohui/nodeStudy/blob/master/study-002.md)
 * study3: [项目笔记](https://github.com/mohui/nodeStudy/blob/master/study-003.md)
-* study4: [空](https://github.com/mohui/nodeStudy/blob/master/study-004.md)
-* study5: [空](https://github.com/mohui/nodeStudy/blob/master/study-005.md)
-* study6: [中间件的应用](https://github.com/mohui/nodeStudy/blob/master/study-006.md)
-
- string1: [字符串应用](https://github.com/mohui/nodeStudy/blob/master/string-001.md)
 
 
  vueStudy0: [vue路由配置-简单](https://github.com/mohui/nodeStudy/blob/master/vueStudy/vueStudy-000.md)
