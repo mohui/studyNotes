@@ -47,3 +47,37 @@ insert into "check_group"(
 )
 
 ```
+### postgreSql 的数组查询方法
+```sql
+select  * from role where permissions:: text[] <@ array[
+    'user-index',
+    'user-add',
+    'user-update',
+    'user-remove',
+    'role-index',
+    'appraisal-result',
+    'appraisal-configuration-management',
+    'appraisal-basic-data',
+    'hospital',
+    'score',
+    'check-add',
+    'check-update',
+    'check-select-hospital',
+    'check-clone',
+    'check-import',
+    'check-open-grade',
+    'check-close-grade',
+    'check-remove',
+    'rule-add',
+    'rule-update',
+    'rule-remove',
+    'profile',
+    'all-check',
+    'etl-hospital',
+    'tags-detail',
+    'person-excel',
+    'audit-log',
+    'ai',
+    'guidelines'
+];
+```
