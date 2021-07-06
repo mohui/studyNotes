@@ -71,3 +71,27 @@ await appDB.execute(
     JSON.stringify(auditLogModel.extra)
  );
 ```
+
+
+```javascript
+    // 如果字段为数组
+    const [sql, ruleParams] = sqlRender(
+      `
+      select id,
+               name,
+               permissions,
+               deleted_at,
+               creator
+        from role
+        where 1 = 1
+        {{#if IsSuperAdmin}}
+          and permissions:: text[] <@ array[{{#each allRoles}}{{? this}}{{#sep}},{{/sep}}{{/each}}]
+        {{/if}}
+
+        `,
+      {
+        allRoles: Context.current.user.permissions,
+        IsSuperAdmin
+      }
+    );
+```
