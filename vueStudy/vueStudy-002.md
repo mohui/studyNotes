@@ -157,7 +157,7 @@ export default {
     </el-button>
 </el-button-group>
 ```
-```
+```vue
 <el-page-header>
             <template v-slot:content>
               dfasfadfda
@@ -166,7 +166,7 @@ export default {
 ```
 
 ## 备份
-```
+```vue
             <el-col :span="24">
               <el-card>
                 <div class="grid-content bg-fff">
@@ -284,7 +284,7 @@ export default {
 ```
 
 
-```
+```vue
 <template>
   <div>
     <div class="grid-content bg-fff">
