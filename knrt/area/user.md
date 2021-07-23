@@ -1,5 +1,15 @@
 ```javascript
 export default class User {
+  async login(account, password) {
+    let user = await UserModel.findOne({
+      where: {account, password},
+      include: [RoleModel, RegionModel]
+    });
+    //是否查询出结果
+    if (!user) throw new KatoLogicError('账户密码有误', 1002);
+    return user;
+  }
+
 
   async addUser(user) {
     return appDB.transaction(async () => {
