@@ -20,7 +20,7 @@ import KnAreaCascader from './components/kn-area-cascader';
 ></kn-area-cascader>
 ```
 
-### 组件应用
+### 组件应用 ui/web/components
 ```vue
 <template>
   <el-popover ref="pop" placement="bottom" width="300" trigger="click">
@@ -202,5 +202,186 @@ export default {
 }
 </style>
 
+```
+```javascript
+export default class Region {
+
+  @validate(should.string().description('通过code查询区域下的机构'))
+  async listHospital(code) {
+    return await HospitalModel.findAll({
+      attributes: {
+        exclude: ['deleted_at']
+      },
+      where: {region: code},
+      paranoid: false,
+      include: {
+        model: RegionModel,
+        paranoid: false,
+        attributes: {
+          exclude: ['deleted_at']
+        }
+      }
+    });
+  }
+}
+```
+
+```javascript
+export default class Person {
+  @validate(
+    should.object({
+      hospital: should
+        .string()
+        .required()
+        .allow('', null),
+      include: should.boolean().description('是否包含查询下级机构的个人档案')
+    })
+  )
+  async list(params) {
+    const {
+      pageSize,
+      pageNo,
+      hospital,
+      region,
+      idCard,
+      tags,
+      include,
+      personOr = false,
+      documentOr = false,
+      year = dayjs().year()
+    } = params;
+    const limit = pageSize;
+    const offset = (pageNo - 1 ?? 0) * limit;
+    const his = '340203';
+    let {name} = params;
+    if (name) name = `%${name}%`;
+    let hospitals = [];
+    //没有选机构和地区,则默认查询当前用户所拥有的机构
+    if (!region && !hospital)
+      hospitals = Context.current.user.hospitals.map(it => it.id);
+    //仅有地区,则查询该地区下的所有机构
+    if (region && !hospital) {
+      const children = await getLeaves(region);
+      hospitals = (
+        await HospitalModel.findAll({
+          where: {
+            id: {
+              [Op.in]: children
+                .map(it => it.code)
+                //TODO: 苟且区分一下地区和机构
+                .filter(it => it.length === 36)
+            }
+          }
+        })
+      )
+        .map(it => it.toJSON())
+        .map(it => it.id);
+    }
+    if (hospital) hospitals = [hospital];
+
+    //如果查询出来的机构列表为空,则数据都为空
+    if (hospitals.length === 0) return {count: 0, rows: []};
+    // language=PostgreSQL
+    hospitals = (
+      await Promise.all(
+        hospitals.map(it =>
+          appDB.execute(
+            `select hishospid as id from hospital_mapping where h_id = ?`,
+            it
+          )
+        )
+      )
+    )
+      .filter(it => it.length > 0)
+      .reduce(
+        (result, current) => [...result, ...current.map(it => it.id)],
+        []
+      );
+    if (include && hospital)
+      hospitals = (
+        await Promise.all(
+          hospitals.map(item =>
+            //查询机构的下属机构
+            originalDB.execute(
+              `select hospid as id from view_hospital where hos_hospid = ?`,
+              item
+            )
+          )
+        )
+      )
+        .filter(it => it.length > 0)
+        .reduce(
+          (result, current) => [...result, ...current.map(it => it.id)],
+          []
+        )
+        .concat(hospitals);
+
+    const sqlRenderResult = listRender({
+      his,
+      name,
+      hospitals,
+      idCard,
+      ...tags,
+      personOr,
+      documentOr,
+      year
+    });
+    const count = (
+      await originalDB.execute(
+        `select count(1) as count ${sqlRenderResult[0]}`,
+        ...sqlRenderResult[1]
+      )
+    )[0].count;
+    const person = await originalDB.execute(
+      `select vp.personnum   as id,
+                vp.name,
+                vp.idcardno    as "idCard",
+                vp.address     as "address",
+                vp.sex         as "gender",
+                vp.phone       as "phone",
+                mp."S03",
+                mp."S23",
+                mp."O00",
+                mp."O02",
+                mp."H00",
+                mp."H01",
+                mp."H02",
+                mp."D00",
+                mp."D01",
+                mp."D02",
+                mp."C01",
+                mp."C02",
+                mp."C03",
+                mp."C04",
+                mp."C05",
+                mp."C00",
+                mp."C06",
+                mp."C07",
+                mp."C08",
+                mp."C09",
+                mp."C10",
+                mp."C11",
+                mp."C13",
+                mp."C14",
+                mp."E00",
+                mp.ai_2dm,
+                mp.ai_hua,
+                mp.year,
+                vh.hospname    as "hospitalName",
+                vp.operatetime as date
+         ${sqlRenderResult[0]}
+         order by vp.operatetime desc, vp.personnum desc
+         limit ? offset ?`,
+      ...sqlRenderResult[1],
+      limit,
+      offset
+    );
+
+    return {
+      count: Number(count),
+      rows: person
+    };
+  }
+}
 ```
 
