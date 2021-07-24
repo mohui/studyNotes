@@ -203,8 +203,32 @@ export default {
 </style>
 
 ```
+
+### 接口备份
 ```javascript
+import {RegionModel, WorkDifficultyModel} from '../database/model';
+
 export default class Region {
+  @validate(should.string().allow(null))
+  async list(code) {
+    if (!code) code = Context.current.user.regionId;
+    return await RegionModel.findAll({
+      paranoid: false,
+      attributes: {exclude: ['deleted_at']},
+      where: {parent: code}
+    });
+  }
+  //地区的信息
+  @validate(
+    should
+      .string()
+      .required()
+      .description('地区code')
+  )
+  async info(code) {
+    return RegionModel.findOne({where: {code}});
+  }
+
 
   @validate(should.string().description('通过code查询区域下的机构'))
   async listHospital(code) {
