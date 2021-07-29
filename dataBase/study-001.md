@@ -1,9 +1,14 @@
 # 删表语句
-```
+```sql
 // DROP TABLE 表名;
 DROP TABLE test;
 ```
+# 删除字段
+> test表名, hello 字段名
+```sql
+alter table test drop column if exists hello;
 
+```
 # 创表语句
 ```sql
 
@@ -20,6 +25,15 @@ COMMENT ON COLUMN "test"."id" IS '主键id';
 COMMENT ON COLUMN "test"."test_name" IS '名字';
 COMMENT ON COLUMN "test"."year" IS '年份';
 COMMENT ON COLUMN "test"."money" IS '金额';
+```
+
+# 新增字段
+```sql
+-- 新增字段
+ALTER  table his_work_item ADD COLUMN staffs varchar(255)[] DEFAULT null;
+-- 字段备注
+COMMENT ON COLUMN his_work_item."staffs" IS '关联员工';
+
 ```
 # 修改字段类型
 ```sql
