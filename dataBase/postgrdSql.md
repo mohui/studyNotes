@@ -4,8 +4,14 @@
 const sql =`select * from tableName where extra ->> 'type' = 'check'`;
 ```
 
+### in查询
 ```javascript
 const sql = `select * from tableName where id in (${staffIds.map(() => '?')})`;
+```
+
+### 类似MySQL的ifnull
+```sql
+select item, score, COALESCE(rate,1) a  from his_staff_work_item_mapping order by updated_at desc;
 ```
 
 
