@@ -1,3 +1,4 @@
+```javascript
 import {appDB, originalDB} from '../../app';
 import {v4 as uuid} from 'uuid';
 import * as dayjs from 'dayjs';
@@ -883,3 +884,5 @@ export default class HisStaff {
     }
     // endregion
 }
+
+```
