@@ -4,6 +4,9 @@
 vue学习笔记
 ## 安装vue
 npm安装
+>  脚手架图形安装
+vue ci
+
 ## 安装Element组件
 * npm安装组件
 ```
