@@ -27,3 +27,23 @@ const oldReturn = rows.reduce(
       }
     )
 ```
+
+
+```javascript
+// language=PostgreSQL
+hospitals = (
+  await Promise.all(
+    hospitals.map(it =>
+      appDB.execute(
+        `select hishospid as id from hospital_mapping where h_id = ?`,
+        it
+      )
+    )
+  )
+)
+  .filter(it => it.length > 0)
+  .reduce(
+    (result, current) => [...result, ...current.map(it => it.id)],
+    []
+  );
+```
