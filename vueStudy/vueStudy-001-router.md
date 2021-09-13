@@ -1,5 +1,10 @@
 # router学习笔记
 
+## 安装 route
+```
+npm install vue-router
+```
+
 ## router示例代码
 ```javascript
 import Vue from 'vue'
