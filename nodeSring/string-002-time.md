@@ -12,6 +12,12 @@ const startYear = dayjs().startOf('year');
 // 一年的结束日期
 const endYear = dayjs().endOf('year');
 
+// 年的开始时间 const year = 2020;
+const yearStartDate = dayjs().year(year).startOf('y').toDate();
+// 下一年的开始时间 const year = 2020;
+const yearEndtDate = dayjs().year(year).startOf('y').add(1, 'y').toDate();
+
+
 // 当天零点零分零秒
 const nowStart = dayjs().startOf('day');
 // 当天23点59分59秒
@@ -22,6 +28,7 @@ const yearStartDay = current.diff(dayjs().startOf('year'), "day");
 // 一年还剩余多少天
 const yearEndDay = dayjs().endOf('year').diff(current, "day");
 ```
+
 ## 季度的用法
 ```javascript
 // 引入季度的插件
