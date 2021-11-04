@@ -75,3 +75,9 @@ where
     and VisitDate > '2021-01-01T16:00:00.000Z'
 and OperateOrganization = '24abb230-a9ed-49a7-bef0-043539b2f8c7'`;
 ```
+
+### 在研究
+```
+select extract(month from now());
+
+```
