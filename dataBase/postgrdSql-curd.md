@@ -60,3 +60,19 @@ const sql = `
  李四 0.5
 */
 ```
+
+### 行转列
+```javascript
+const sql = `
+    select
+        metric.id,
+        sum( case  when metric.name = 'HIS.OutpatientVisits' then metric.value else 0 end) "OutpatientVisits",
+        sum( case  when metric.name = 'HIS.OutpatientIncomes' then metric.value else 0 end) "OutpatientIncomes",
+        sum( case  when metric.name = 'HIS.DischargedVisits' then metric.value else 0 end) "DischargedVisits",
+        sum( case  when metric.name = 'HIS.InpatientVisits' then metric.value else 0 end) "InpatientVisits",
+        sum( case  when metric.name = 'HIS.InpatientIncomes' then metric.value else 0 end) "InpatientIncomes"
+    from mark_metric metric
+    where id = '24abb230-a9ed-49a7-bef0-043539b2f8c7'
+    group by metric.id;
+`;
+```
