@@ -48,6 +48,24 @@ export default class Test {
     
     return new Date();
   }
+  @validate(
+    should
+      .object({
+        id: should.string().required(),
+        areas: should
+          .array()
+          .items({
+            hospital: should.string().required(),
+            department: should.string().allow(null)
+          })
+          .allow(null)
+      })
+      .required()
+  )
+ test1(){
+    return 12;
+ }
+
 }
 ```
 
