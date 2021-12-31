@@ -85,6 +85,12 @@ insert into "check_group"(
 	select h.check_system,h.hospital, h.created_at, h.updated_at from "check_hospital"
 )
 
+-- 新的插入方法
+insert into staff_request(id, staff, area)
+select new.* from (select ? as id, ? as staff, ? as area)new
+left join staff_request old on old.staff = new.staff 
+    and old.area = new.area and old.status = '待审核'
+    where old.id is null
 ```
 ### postgreSql 的数组查询方法
 ```sql
