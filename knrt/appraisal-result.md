@@ -1,53 +1,53 @@
 # 备份
 ## 历史趋势备份
 ```vue
-            <el-col :span="10" :xs="24" :sm="12" :md="10" :lg="10" :xl="10">
-              <el-card
-                v-loading="
-                  $asyncComputed.historicalTrendLineChartSeverData.updating
-                "
-                shadow="hover"
-              >
-                <div class="score-detail">
-                  <line-chart
-                    :x-axis-data="historicalTrendLineChartData.xAxisData"
-                    :y-axis-data="historicalTrendLineChartData.yAxisData"
-                    line-text="%"
-                    :list-flag="params.listFlag"
-                  ></line-chart>
-                </div>
-              </el-card>
-            </el-col>
+<el-col :span="10" :xs="24" :sm="12" :md="10" :lg="10" :xl="10">
+  <el-card
+    v-loading="
+      $asyncComputed.historicalTrendLineChartSeverData.updating
+    "
+    shadow="hover"
+  >
+    <div class="score-detail">
+      <line-chart
+        :x-axis-data="historicalTrendLineChartData.xAxisData"
+        :y-axis-data="historicalTrendLineChartData.yAxisData"
+        line-text="%"
+        :list-flag="params.listFlag"
+      ></line-chart>
+    </div>
+  </el-card>
+</el-col>
 
 
 
-            <!--下级金额分配-->
-            <el-col :span="10" :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-              <el-card
-                v-loading="$asyncComputed.rankServerData.updating"
-                shadow="hover"
-              >
-                <div class="score-detail">
-                  <two-card-tree-map
-                    :map-data="budgetData"
-                    :color="color"
-                    empty-text="尚未配置金额"
-                  ></two-card-tree-map>
-                </div>
-              </el-card>
-            </el-col>
+<!--下级金额分配-->
+<el-col :span="10" :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
+  <el-card
+    v-loading="$asyncComputed.rankServerData.updating"
+    shadow="hover"
+  >
+    <div class="score-detail">
+      <two-card-tree-map
+        :map-data="budgetData"
+        :color="color"
+        empty-text="尚未配置金额"
+      ></two-card-tree-map>
+    </div>
+  </el-card>
+</el-col>
 
-            <!--下级工分值图-->
-            <el-col :span="6" :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-              <el-card
-                v-loading="$asyncComputed.rankServerData.updating"
-                shadow="hover"
-              >
-                <div class="score-detail">
-                  <two-card-tree-map :map-data="mapData"></two-card-tree-map>
-                </div>
-              </el-card>
-            </el-col>
+<!--下级工分值图-->
+<el-col :span="6" :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
+  <el-card
+    v-loading="$asyncComputed.rankServerData.updating"
+    shadow="hover"
+  >
+    <div class="score-detail">
+      <two-card-tree-map :map-data="mapData"></two-card-tree-map>
+    </div>
+  </el-card>
+</el-col>
 ```
 > javascript
 ```javascript
