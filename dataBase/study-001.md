@@ -1,6 +1,6 @@
 # 删表语句
 ```sql
-// DROP TABLE 表名;
+DROP TABLE 表名;
 DROP TABLE test;
 ```
 # 删除字段
@@ -74,9 +74,9 @@ const delIndex = `
 # 插入
 
 ```sql
-insert into test values('1','zhangsan','3');
-insert into test values('2','zhangsan','3');
-insert into test values('3','zhangsan','3');
+insert into test values('1','张三','3');
+insert into test values('2','小张三','3');
+insert into test values('3','校长三','3');
 ```
 
 ##  查询插入
@@ -100,29 +100,18 @@ select  * from role where permissions:: text[] <@ array[
     'user-update',
     'user-remove',
     'role-index',
-    'appraisal-result',
-    'appraisal-configuration-management',
-    'appraisal-basic-data',
-    'hospital',
-    'score',
-    'check-add',
-    'check-update',
-    'check-select-hospital',
-    'check-clone',
-    'check-import',
-    'check-open-grade',
-    'check-close-grade',
-    'check-remove',
-    'rule-add',
-    'rule-update',
-    'rule-remove',
-    'profile',
-    'all-check',
-    'etl-hospital',
-    'tags-detail',
-    'person-excel',
-    'audit-log',
-    'ai',
-    'guidelines'
+    'appraisal-result'
 ];
+```
+
+# 修改语句
+
+```javascript
+const 修改本字段固定内容 = `
+update test set test_name = replace(test_name, '.docx', '.pdf') where id is not null;
+update test set test_name = replace(test_name, '.doc', '.pdf') where id is not null;
+`;
+const 本字段追加内容 = `update test set test_name = concat(test_name, '.docx') where id is not null`;
+
+
 ```
