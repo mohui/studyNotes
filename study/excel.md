@@ -13,5 +13,6 @@ async function exportExcel() {
     workSheet.mergeCells('A1', 'A2');
     // 合并单元格 B1,C1,D1
     workSheet.mergeCells('B1', 'D1');
+    return workBook.xlsx.writeBuffer();
 }
 ```
