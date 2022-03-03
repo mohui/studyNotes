@@ -3,6 +3,29 @@
 import {imageSync} from 'qr-image';
 
 export default class Test {
+    //region 员工申请相关
+    /**
+    * 生成机构邀请码
+    *
+    * 格式: {area: ${area}}
+    * @return 二维码地址
+    */
+    async invite() {
+        const hospital = await getHospital();
+        // 生成机构邀请码
+        const imageBuffer = imageSync(
+          JSON.stringify({
+            code: hospital,
+            name: Context.current.user.hospitals[0]['name']
+          }),
+          {type: 'png'}
+        );
+        return {
+          image: `data:image/png;base64,${imageBuffer.toString('base64')}`
+        };
+    }
+
+
 
     // 获取二维码
     async getQRCode(id) {
@@ -24,5 +47,6 @@ export default class Test {
         image: `data:image/png;base64,${imageBuffer.toString('base64')}`
       };
     }
+    // endregion
 }
 ```
