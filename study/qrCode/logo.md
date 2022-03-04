@@ -56,6 +56,8 @@ export default class Test {
         light: '#0000' // Transparent background
       }
     });
+    // 范围生成的二维码base64
+    // const qrCodeImg = await QRCode.toDataURL(content);
     // 需要添加到二维码的logo
     const logo = path.resolve(
       '/Users/wanghehui/projects/node/appraisal-server/ui/assets/rank/first.png'
