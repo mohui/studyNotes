@@ -31,6 +31,29 @@ async function mergerCntImg(oriImg, waterImg, targetImg, ratio = 5) {
   await ori.composite([{input: waterBuffer}]).toFile(targetImg);
 }
 
+/**
+ * 合并二维码和log,生成一个新的二维码
+ *
+ * @param qrBuffer 二维码的buffer
+ * @param waterImg logo的地址
+ * @param ratio
+ */
+async function mergerCntImg1(qrBuffer, waterImg, ratio = 5) {
+  const waterImgBuffer = await fs.readFileSync(`${waterImg}`);
+
+  const [ori, water] = await Promise.all([
+    sharp(qrBuffer),
+    sharp(waterImgBuffer)
+  ]);
+  // 通过比例进行合成
+  const oriHeight = await ori.metadata();
+  const waterHeight = Math.ceil(oriHeight.height / ratio);
+  const waterWidth = Math.ceil(oriHeight.width / ratio);
+  const waterBuffer = await water.resize(waterWidth, waterHeight).toBuffer();
+  // 合并图片的图片大小需要转成buffer，不能直接使用sharp对象，不然sharp也会报错
+  return await ori.composite([{input: waterBuffer}]).toBuffer();
+}
+
 export default class Test {
   async test(id) {
     let token = Context.req.headers.token;
@@ -102,6 +125,36 @@ export default class Test {
       image: `data:image/png;base64,${imageBuffer.toString('base64')}`
     };
   }
+
+  /**
+   * 生成机构邀请码
+   *
+   * 格式: {area: ${area}}
+   * @return 二维码地址
+   */
+  async invite() {
+    const hospital = await getHospital();
+
+    // 生成二维码,返回二维码地址
+    const qrCodeBuffer = imageSync(
+      JSON.stringify({
+        code: hospital,
+        name: Context.current.user.hospitals[0]['name']
+      }),
+      {type: 'png'}
+    );
+    // 需要添加到二维码的logo
+    const logo = path.resolve(path.join(__dirname, './first.png'));
+    // 融合二维码和log
+    const qrFile = await mergerCntImg1(qrCodeBuffer, logo);
+    // 把文件转为base64
+    const imageBuffer = new Buffer(qrFile).toString('base64');
+    // 返回机构邀请码
+    return {
+      image: `data:image/png;base64,${imageBuffer.toString()}`
+    };
+  }
+
 }
 
 ```
