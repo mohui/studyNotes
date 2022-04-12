@@ -96,6 +96,7 @@ export default class Test {
    */
   async test2(sum, diff) {
     /**
+     * 比如和是11, 差是3
      * x + y = 11;
      * x - y = 3;
      * x + y + x - y = 11+3(14)
@@ -117,30 +118,7 @@ export default class Test {
    *  输出能拼接出来的最大数字
    */
   async test3() {
-    /**
-     * 1: 找出最小长度的数
-     * 1.1: 用最小长度数的长度和其他位数做比较,把比他大并且是相等的放到一个数组中,
-     * 1.2: 如果有相同的比对第二个数,以此类推
-     */
-    // const num = 5;
-    //
-    // const num1 = 61;
-    // const num2 = 4133;
-    // const num3 = 451;
-    // const num4 = 41;
-    // const num5 = 45;
-    // const array = [num1, num2, num3, num4, num5];
     let tmp = 0;
-    // for (let i = 0; i < num; i++) {
-    //   for (let j = 0; j < num - 1; j++) {
-    //     if (array[j] > array[j + 1]) {
-    //       tmp = array[j];
-    //       array[j] = array[j + 1];
-    //       array[j + 1] = tmp;
-    //     }
-    //   }
-    // }
-    // return array;
     const num = 9;
     const array = [1423, 143, 1431, 23, 231, 237, 34, 345, 41];
     /**
@@ -165,8 +143,6 @@ export default class Test {
     return array;
   }
 }
-
-
 ```
 
 ```javascript

@@ -67,28 +67,7 @@ export default class Test {
         }
       }
     }
-
-  /**
-   * 输入两个人的苹果个数的和与差，确定他们的苹果个数。
-   * 输入：苹果的数量和，苹果的数量差
-   * 输出：两人各自苹果的个数
-   * @param sum
-   * @param diff
-   */
-  async test2(sum, diff) {
-    /**
-     * x + y = 11;
-     * x - y = 3;
-     * x + y + x - y = 11+3(14)
-     * 2x = 14
-     * x = 7
-     * y = 11 - 7 = 4
-     */
-    const x = (sum + diff) / 2;
-    const y = sum - x;
-    return {x, y};
-  }
-    /**
+   /**
    * 设有n个正整数a1，a2，a3，a4……an，将它们拼接成一个字符串，要求这个字符串对应的数字最大。
    * 输入格式
    *  第一行让用户输入要拼接数字的个数n
@@ -100,10 +79,6 @@ export default class Test {
     let tmp = 0;
     const num = 9;
     const array = [1423, 143, 1431, 23, 231, 237, 34, 345, 41];
-    /**
-     * 1: 先把数字拆分成数组
-     * 2: 按照首位数字排序,相同的放到一起并按照大小排序
-     */
     /**
      * 1: 两个数做比较
      */
@@ -121,9 +96,5 @@ export default class Test {
     }
     return array;
   }
-
 }
-```
-```javascript
-
 ```
