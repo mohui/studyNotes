@@ -67,34 +67,5 @@ export default class Test {
         }
       }
     }
-   /**
-   * 设有n个正整数a1，a2，a3，a4……an，将它们拼接成一个字符串，要求这个字符串对应的数字最大。
-   * 输入格式
-   *  第一行让用户输入要拼接数字的个数n
-   *  第二行让用户输入n个要拼接的数字
-   * 输出格式
-   *  输出能拼接出来的最大数字
-   */
-  async test3() {
-    let tmp = 0;
-    const num = 9;
-    const array = [1423, 143, 1431, 23, 231, 237, 34, 345, 41];
-    /**
-     * 1: 两个数做比较
-     */
-    for (let i = 0; i < num; i++) {
-      for (let j = 0; j < num - 1; j++) {
-        if (
-          Number(`${array[j]}${array[j + 1]}`) <
-          Number(`${array[j + 1]}${array[j]}`)
-        ) {
-          tmp = array[j];
-          array[j] = array[j + 1];
-          array[j + 1] = tmp;
-        }
-      }
-    }
-    return array;
-  }
 }
 ```
