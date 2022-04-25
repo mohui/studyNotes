@@ -15,6 +15,8 @@ select item, score, COALESCE(rate,1) a  from his_staff_work_item_mapping order b
 
 -- 取第一条时间
 select item, score, first_value(operate_time) over ()  operate_time  from his_staff_work_item_mapping order by updated_at desc;
+-- 返回int类型
+select cast(count(1) as int) from news_pv_mapping pv where pv.news = news.id
 ```
 
 
