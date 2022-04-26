@@ -12,3 +12,10 @@ const str = 'hello word';
 // startsWith() 方法用于检测字符串是否以指定的前缀开始
 str.startsWith('he');
 ```
+
+```javascript
+// 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+indexOf();
+
+
+```
