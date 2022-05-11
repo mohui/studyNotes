@@ -24,7 +24,6 @@ const number = Math.random();
 // $ npm install --save decimal.js // 安装 decimal
 import { Decimal } from 'decimal.js';//刚刚加入时IDEA可能还没反应所以显示灰色，过会就好了
 
-
 //加法运算
 var a = 0.13;
 var b = 0.25;
@@ -49,4 +48,23 @@ var b = 10;
 console.log('直接除法运算 a / b =', a / b);
 console.log('使用Decimaljs a / b =', new Decimal(a).div(new Decimal(b)).toNumber());
 
+```
+
+#### i++ 和 ++i 的区别
+```javascript
+export default class Test {
+    test() {
+        // 先运算 m = i + 5,再加1 i = i + 1;
+        let i = 5;
+        const m = i++ + 5;
+        console.log(m); // 10
+        console.log(i); // 6
+
+        // 先加1 i = i + 1 ,在运算 m = i + 5
+        i = 5;
+        const n = ++i + 5;
+        console.log(n); // 11
+        console.log(i); // 6
+    }
+}
 ```
