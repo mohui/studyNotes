@@ -18,3 +18,29 @@ async function exportExcel() {
     return workBook.xlsx.writeBuffer();
 }
 ```
+
+##### 导出备份
+```javascript
+
+
+async function excelBuffer2(month) {
+    const buffer = (await excelBuffer(month)) as Buffer;
+    //初始化文件挂载
+    await initFS();
+    //写入本地
+    jobResult = `/manualExcel/${fileName}-${dayjs().format(
+        'YYYY-MM-DDTHH:mm:ss'
+    )}.xls`;
+    await unifs.writeFile(jobResult, buffer);
+}
+
+
+async function excelBuffer3(month) {
+    const fileName = '测试';
+    const buffer = (await excelBuffer(month)) as Buffer;
+    const jobResult = `/manualExcel/${fileName}-${dayjs().format(
+        'YYYY-MM-DDTHH:mm:ss'
+    )}.xls`;
+    await unifs.writeFile(jobResult, buffer);
+}
+```
