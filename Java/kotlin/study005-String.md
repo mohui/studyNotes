@@ -7,6 +7,30 @@ val name: String = "hello";
 name.capitalize() // Hello
 ```
 
+#### indexOf, substring 用法
+```
+var str: String = "zhangSan is success result";
+val indexOf = str.indexOf('u');
+println(indexOf); // 13
+val str1 = str.substring(0, 3);
+println(indexOf); // zha
+
+val str2 = str.substring(0, indexOf); // zhangSan is s
+// 等效于
+val str1 = str.substring(0 until indexOf); // zhangSan is s
+
+```
+
+#### split 字符串分割成数组
+```
+var str: String = "zhangSan is success result";
+val indexOf = str.split(' '); // [zhangSan, is, success, result]
+
+val (v1, v2, v3, v4) = indexOf;
+// "v1: zhangSan, v2: is, v3: success, v4: result"
+return "v1: $v1, v2: $v2, v3: $v3, v4: $v4";
+```
+
 #### isBlank 是否为空字符串
 ```
 val name: Sting = "";
