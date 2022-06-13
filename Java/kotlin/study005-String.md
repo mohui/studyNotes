@@ -76,3 +76,21 @@ return name?.let{it}?: "这是默认值" // 这是默认值
 var name: String? = "hello";
 return name!!.capitalize(); // Hello
 ```
+
+#### replace 替换用法
+```
+val pwd: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+val newPwd: String = pwd.replace(Regex("[A,B,C,D,E,F,Y,Z]")) {
+    println(it.value); // A,B,C,D,E,F,Y,Z
+    when(it.value) {
+        "A" -> "2"
+        "E" -> "4"
+        "F" -> "6"
+        "Y" -> "8"
+        "Z" -> "0"
+        else -> "3"
+    }
+}
+return newPwd; // 233346GHIJKLMNOPQRSTUVWX80
+```
