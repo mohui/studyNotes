@@ -94,3 +94,11 @@ val newPwd: String = pwd.replace(Regex("[A,B,C,D,E,F,Y,Z]")) {
 }
 return newPwd; // 233346GHIJKLMNOPQRSTUVWX80
 ```
+
+#### forEach字符串
+```
+val pwd: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+pwd.forEach{
+    println("这是$it") // 每一个字母
+}
+```
