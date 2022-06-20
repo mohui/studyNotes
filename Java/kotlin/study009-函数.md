@@ -2,7 +2,9 @@
 - 内联函数 inline
 - 函数引用 ::
 - apply
-- 具名函数调用 run 函数
+- 具名函数调用
+- run 函数
+- with 函数
 
 ## 内联函数
 #### 内联函数 inline
@@ -42,6 +44,9 @@ inline fun login(
 ```
 
 #### apply内置函数
+#### also内置函数
+- 这两个函数用法相同,区别apply是this, also是it
+
 * 例如字符串 info: String = "How Are You";
 * 特点: apply 始终返回info字符串本身string类型
 * 一般函数都会持有一个it, apply函数不会,但是会持有当前this == info字符串本身
@@ -65,7 +70,9 @@ info.apply {
 }
 ```
 
-## 具名函数调用 run 函数
+## 具名函数调用 
+
+#### run 函数
 * 函数返回类型会根据匿名函数最后一行变化而变化
 * 里面持有的是 this == str本身, 和apply一样
 ```
@@ -80,5 +87,16 @@ fun main() {
 fun isLong(str: String) = if (str.length > 5) true else false
 fun showText(isLong: Boolean) = if (isLong) "字符串合格" else "字符串不合格";
 fun mapText(showText: String) = "[$showText]";
+```
+
+#### with 函数
+- 和run函数类似,只是用法为 with()
+```
+fun main() {
+    val info = "How Are You";
+    with(info, ::isLong); // true
+}
+fun isLong(str: String) = if (str.length > 5) true else false
+
 ```
 
