@@ -2,7 +2,9 @@
 - 内联函数 inline
 - 函数引用 ::
 - apply
+- 具名函数调用 run 函数
 
+## 内联函数
 #### 内联函数 inline
 - 函数使用lambda作为参数, 就需要声明成内联
 - 如果函数参数有 lambda, 尽量使用 inline 关键字声明成内联
@@ -62,3 +64,21 @@ info.apply {
     println("info的全部小写${toLowerCase()}")
 }
 ```
+
+## 具名函数调用 run 函数
+* 函数返回类型会根据匿名函数最后一行变化而变化
+* 里面持有的是 this == str本身, 和apply一样
+```
+fun main() {
+    val info = "How Are You";
+    info.run(::isLong)
+        .run(::showText)
+        .run(::mapText)
+        .run(::println)
+}
+
+fun isLong(str: String) = if (str.length > 5) true else false
+fun showText(isLong: Boolean) = if (isLong) "字符串合格" else "字符串不合格";
+fun mapText(showText: String) = "[$showText]";
+```
+
