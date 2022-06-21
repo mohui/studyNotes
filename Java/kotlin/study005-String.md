@@ -43,6 +43,32 @@ if (name.isBlank()) {
 // hello
 ```
 
+#### isNullOrBlank 是否为空字符串或null
+#### isNullOrEmpty 是否为空字符串或null
+- 区别如下所示
+```
+val str = " ";
+var a = str.isNullOrBlank();// true
+var b = str.isNullOrEmpty();// false
+```
+```
+val str = "";
+var a = str.isNullOrBlank(); // true
+var b = str.isNullOrEmpty(); // true
+```
+```
+val str: String? = null;
+var a = str.isNullOrBlank(); // true
+var b = str.isNullOrEmpty(); // true
+```
+
+```
+val str: String? = "how";
+var a = str.isNullOrBlank(); // false
+var b = str.isNullOrEmpty(); // false
+```
+
+
 #### let的使用, 配合?.
 ```
 var name: String? = null;
