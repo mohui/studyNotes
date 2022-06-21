@@ -91,6 +91,7 @@ fun mapText(showText: String) = "[$showText]";
 
 #### with 函数
 - 和run函数类似,只是用法为 with()
+
 ```
 fun main() {
     val info = "How Are You";
@@ -99,4 +100,14 @@ fun main() {
 fun isLong(str: String) = if (str.length > 5) true else false
 
 ```
+
+## takeIf 和 takeUnless
+
+- takeIf 和 takeUnless 功能是相反的
+- name.takeIf{true / false}, true: 返回name本身, false 返回null
+- name.takeUnless{true / false}, false: 返回name本身, true 返回null
+
+#### takeIf 函数应用
+
+#### takeUnless 函数应用
 
