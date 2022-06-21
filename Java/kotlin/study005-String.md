@@ -84,7 +84,7 @@ val r = name?.let {
 return r; // null
 ```
 
-#### 空合并符
+#### ?: 空合并符
 ```
 var name: String? = null;
 return name?: "这是默认值" // 这是默认值
