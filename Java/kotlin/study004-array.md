@@ -1,7 +1,44 @@
 ### 数组
-```
-val list: List<Int> = listOf(2, 4, 6, 7, 8); // [2, 4, 6, 7, 8]
 
+| 关键字    | 用法           | 
+|--------|--------------|
+| Int    | 整数类型         |
+| String | 字符串          |
+
+#### 不可变集合
+```
+val list: List<String> = listOf<String>("how", "are", "you", "fine", "thinks")
+// 可以简化为
+val list = listOf("how", "are", "you", "fine", "thinks")
+```
+#### 可变集合 MutableList
+```
+val list: MutableList<String> = mutableListOf<String>("how", "are", "you", "fine", "thinks")
+// 可以简化为
+val list = mutableListOf("how", "are", "you", "fine", "thinks")
+```
+
+#### 不可变 转为 可变 toMutableList
+```
+val list = listOf("how", "are", "you", "fine", "thinks")
+val list1: MutableList<String> = list.toMutableList();
+```
+
+#### 可变 转为 不可变 toList
+```
+val list = mutableListOf("how", "are", "you", "fine", "thinks")
+val list1: List<String> = list.toList();
+```
+
+#### let
+* let函数返回类型, 根据匿名函数最后一行变化而变化
+* 匿名函数最后一行作为返回值
+```
+val numberList: List<Int> = listOf(2, 4, 6, 7, 8); // [2, 4, 6, 7, 8]
+
+val sumFirst = numberList.let{
+    it.first() + it.first()
+}
 ```
 
 #### first 获取第一个元素
@@ -9,11 +46,40 @@ val list: List<Int> = listOf(2, 4, 6, 7, 8); // [2, 4, 6, 7, 8]
 val v1 = list.first();
 ```
 
-#### let
-* let函数返回类型, 根据匿名函数最后一行变化而变化
-* 匿名函数最后一行作为返回值
+#### getOrElse 和 getOrNull
+- getOrElse : 需要默认值,如果越界,会打印默认值
+- getOrNull : 不需要默认值,如果越界,会打印 null
 ```
-val sumFirst = list.let{
-    it.first() + it.first()
-}
+println(list.getOrElse(5) {"越界"}); // 越界
+println(list.getOrNull(5)); // null
 ```
+
+#### 可变(MutableList)之 add 添加
+```
+list.add("you");
+```
+#### 可变(MutableList)之 remove 删除
+```
+list.remove("how");
+```
+
+#### 可变(MutableList)之 removeIf 带条件删除
+```
+// 删除所有
+list.removeIf{ true }
+// 删除所有带 "o"的
+list.removeIf{ it.contains("o")} // [are, fine, thinks]
+```
+
+#### 可变(MutableList)之 +=, -=
+```
+// += 的用法
+list += "张三" // ["how", "are", "you", "fine", "thinks", "张三"]
+// -= 的用法
+list -= "thinks" // ["how", "are", "you", "fine", "张三"]
+```
+
+ 
+    
+        
+
