@@ -1,36 +1,36 @@
-### 对象
+# 对象
 
 | 关键字    | 用法           | 
 |--------|--------------|
 | Int    | 整数类型         |
 | String | 字符串          |
 
-#### 不可变集合
+## 不可变集合
 ```
 val list: List<String> = listOf<String>("how", "are", "you", "fine", "thinks")
 // 可以简化为
 val list = listOf("how", "are", "you", "fine", "thinks")
 ```
-#### 可变集合 MutableList
+## 可变集合 MutableList
 ```
 val list: MutableList<String> = mutableListOf<String>("how", "are", "you", "fine", "thinks")
 // 可以简化为
 val list = mutableListOf("how", "are", "you", "fine", "thinks")
 ```
 
-#### 不可变 转为 可变 toMutableList
+## 不可变 转为 可变 toMutableList
 ```
 val list = listOf("how", "are", "you", "fine", "thinks")
 val list1: MutableList<String> = list.toMutableList();
 ```
 
-#### 可变 转为 不可变 toList
+## 可变 转为 不可变 toList
 ```
 val list = mutableListOf("how", "are", "you", "fine", "thinks")
 val list1: List<String> = list.toList();
 ```
 
-#### let
+## let
 * let函数返回类型, 根据匿名函数最后一行变化而变化
 * 匿名函数最后一行作为返回值
 ```
@@ -41,7 +41,7 @@ val sumFirst = numberList.let{
 }
 ```
 
-#### first 获取第一个元素
+## first 获取第一个元素
 ```
 val v1 = list.first();
 ```
@@ -54,16 +54,16 @@ println(list.getOrElse(5) {"越界"}); // 越界
 println(list.getOrNull(5)); // null
 ```
 
-#### 可变(MutableList)之 add 添加
+### 可变(MutableList)之 add 添加
 ```
 list.add("you");
 ```
-#### 可变(MutableList)之 remove 删除
+### 可变(MutableList)之 remove 删除
 ```
 list.remove("how");
 ```
 
-#### 可变(MutableList)之 removeIf 带条件删除
+### 可变(MutableList)之 removeIf 带条件删除
 ```
 // 删除所有
 list.removeIf{ true }
@@ -71,7 +71,7 @@ list.removeIf{ true }
 list.removeIf{ it.contains("o")} // [are, fine, thinks]
 ```
 
-#### 可变(MutableList)之 +=, -=
+### 可变(MutableList)之 +=, -=
 ```
 // += 的用法
 list += "张三" // ["how", "are", "you", "fine", "thinks", "张三"]
@@ -79,14 +79,14 @@ list += "张三" // ["how", "are", "you", "fine", "thinks", "张三"]
 list -= "thinks" // ["how", "are", "you", "fine", "张三"]
 ```
 
-#### for 循环用法
+### for 循环用法
 ```
 for (s in list) {
     println(s)
 }
 ```
 
-#### forEach 用法
+### forEach 用法
 ```
 list.forEach {
     println(it)
@@ -97,7 +97,7 @@ list.forEachIndexed{
 }
 ```
 
-#### forEachIndexed 用法
+### forEachIndexed 用法
 ```
 list.forEachIndexed{
     index, item ->
@@ -105,7 +105,7 @@ list.forEachIndexed{
 }
 ```
 
-#### _可以拒绝接收
+### _可以拒绝接收
 ```
 val (_, v2, v3, v4, v5) = list;
 ```
