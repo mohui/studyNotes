@@ -26,20 +26,3 @@ var str = when(num) {
 }
 return str;
 ```
-
-#### string 模板
-```
-println("你好啊${graden} $atm 123.....")
-```
-
-#### 反引号
-> 如果方法名是关键字,加上反引号就可以了
-```
-// in is 在Java是普通
-public class Aclass {
-    public static final void is() {
-    }
-}
-// in is 在Kotlin是关键字,使用反引号就可以了
-Aclass.`is`()
-```
