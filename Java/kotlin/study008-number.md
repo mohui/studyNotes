@@ -23,3 +23,10 @@ println(23.534.roundToInt()); // 24
 println(23.234.roundToInt()); // 23
 
 ```
+
+## 随机数
+```
+// 计算属性, 下面这样写, get 函数覆盖了 field 内存本身, 相当于 field 失效了
+val number : Int
+    get() = (1..1000).shuffled().first() // 从1到1000 取出随机值, 返回给 getNumber() 函数
+```
