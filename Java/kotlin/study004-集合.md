@@ -79,7 +79,61 @@ list += "张三" // ["how", "are", "you", "fine", "thinks", "张三"]
 list -= "thinks" // ["how", "are", "you", "fine", "张三"]
 ```
 
- 
+#### for 循环用法
+```
+for (s in list) {
+    println(s)
+}
+```
+
+#### forEach 用法
+```
+list.forEach {
+    println(it)
+}
+list.forEachIndexed{
+    index, item ->
+    println("小标$index, 元素$item")
+}
+```
+
+#### forEachIndexed 用法
+```
+list.forEachIndexed{
+    index, item ->
+    println("下标$index, 元素$item")
+}
+```
+
+#### _可以拒绝接收
+```
+val (_, v2, v3, v4, v5) = list;
+```
+
+#### set 的用法
+- 自动去重
+```
+val list: Set<String> = setOf("how", "are", "you", "you", "fine", "thinks");
+println(list) // [how, are, you, fine, thinks]
+println(list.elementAt(4)) // thinks
+println(list.elementAt(5)) // 报错
+println(list.elementAtOrElse(5) { "越界" }) // 越界
+println(list.elementAtOrNull(5)) // null
+```
+
+#### 可变 set用法
+```
+val list: MutableSet<String> = mutableSetOf("how", "are", "you", "fine", "thinks");
+```
+
+#### 去重
+```
+val list: MutableList<String> = mutableListOf<String>("how", "are", "you", "fine", "thinks", "how")
+val list1 = list.toSet();
+val list2 = list.toSet().toList();
+val list3 = list.distinct();
+val list4 = list.toMutableSet().toMutableList();
+```
     
         
 
