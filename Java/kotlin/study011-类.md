@@ -110,7 +110,7 @@ fun main() {
 }
 ```
 
-### 类综合学习笔记
+### 类次构造函数综合学习笔记
 ```
 package com.bjknrt.newbie.example.controller
 
