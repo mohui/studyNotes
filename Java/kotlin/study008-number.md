@@ -30,3 +30,10 @@ println(23.234.roundToInt()); // 23
 val number : Int
     get() = (1..1000).shuffled().first() // 从1到1000 取出随机值, 返回给 getNumber() 函数
 ```
+
+### 运算
+```
+// 乘法
+val number: Int = 9
+num.times(4) // 36
+```
