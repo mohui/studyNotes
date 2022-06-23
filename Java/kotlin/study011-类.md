@@ -85,6 +85,7 @@ fun main() {
 ```
 
 ### 次构造函数
+- 如果有默认值, 优先调用主构造
 ```
 package com.bjknrt.newbie.example.controller
 
@@ -105,6 +106,42 @@ class Kt(name: String) {
 fun main() {
     val p = Kt( "张三")
     Kt("张三", '男')
+    Kt("张三", '男', 30)
+}
+```
+
+### 类综合学习笔记
+```
+package com.bjknrt.newbie.example.controller
+
+// 主构造函数
+class Kt(name: String = "王二") {
+    /**
+     * 初始化块 init代码块
+     *
+     * 这个不是Java的 static{}
+     * 相当于Java的 {} 构造代码块
+     */
+    init {
+        println("主构造调用了多少次")
+    }
+    /**
+     * 次构造函数, 必须要调用主构造函数, 否则不通过
+     * 1: 为什么次构造必须调用主构造?
+     * 答: 主构造统一管理 为了更好的初始化设计
+     */
+    constructor(name: String, sex: Char): this(name) {
+        println("2个参数 name: $name, sex: $sex")
+    }
+    constructor(name: String, sex: Char, age: Int): this(name) {
+        println("2个参数 name: $name, sex: $sex, age: $age")
+    }
+}
+fun main() {
+    val p = Kt( "张三")
+    println()
+    Kt("张三", '男')
+    println()
     Kt("张三", '男', 30)
 }
 ```
