@@ -2,7 +2,7 @@
 - 计算属性
 - 防范竞态条件
 - 主构造函数
-- 次构造函数
+- constructor 次构造函数
 
 ## 计算属性
 ```
@@ -84,7 +84,7 @@ fun main() {
 }
 ```
 
-### 次构造函数
+### constructor 次构造函数
 - 如果有默认值, 优先调用主构造
 ```
 package com.bjknrt.newbie.example.controller
