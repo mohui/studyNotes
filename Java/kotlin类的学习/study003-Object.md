@@ -2,6 +2,7 @@
 - Any 超类学习
 - Object
 - 具名实现和匿名实现
+- companion 伴生对象
 
 ## Any 超类学习
 - Any 相当于 Java 的 Object
@@ -92,5 +93,36 @@ class KtImpl: Kt() {
     override fun del(info: String) {
         println("我是具名对象 del: $info")
     }
+}
+```
+
+### companion 伴生对象
+```
+package com.bjknrt.newbie.example.controller
+
+// 伴生对象学习
+open class Kt {
+    companion object {
+        val info = "天魔的学习"
+
+        fun showInfo() = println("显示: ${info}")
+    }
+}
+
+/**
+ * 伴生对象的由来: 在KT中,没有Java这种 static 静态, 伴生很大程度上和Java的这种 static 静态 差不多的.
+ * 无论 Kt() 构建对象多少次,我们的伴生对象,只有一次加载
+ * 无论Kt.showInfo() 调用多少次,我们的伴生对象,只有一次加载
+ * 伴生对象只会初始化一次
+ */
+fun main() {
+
+    // 背后代码: System.out.println(Kt.Companion.getInfo)
+    println(Kt.info);
+
+    // 背后代码: Kt.Companion.showInfo()
+    Kt.showInfo();
+
+    println();
 }
 ```
