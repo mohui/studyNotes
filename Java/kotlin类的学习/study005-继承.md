@@ -3,6 +3,7 @@
 - is 检测类型
 - as 类型转换
 - 智能转换
+- data 数据类学习
 
 
 ## open 关键字
@@ -109,7 +110,7 @@ fun main() {
 }
 ```
 
-## 数据类学习
+## data 数据类学习
 
 ```
 package com.bjknrt.newbie.example.controller
