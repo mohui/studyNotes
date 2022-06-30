@@ -74,6 +74,11 @@ fun main() {
 
 
 # data 数据类
+- 条件一: 服务请求回来的响应的 JavaBean loginResponseBean 基本上是可以使用数据类
+- 条件二: 至少必须有一个参数的主构造函数
+- 条件三: 必须有参数, val var 的参数
+- 条件四: 不能使用 abstract(抽象类), open, sealed(密封类), inner(内部类) 等等修饰,数据类只做数据载入,存储
+- 条件五: 需要比较, copy, toString, 解构, 等都能丰富的内容时
 ```
 package com.bjknrt.newbie.example.controller
 
