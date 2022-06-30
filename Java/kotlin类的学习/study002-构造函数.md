@@ -100,6 +100,7 @@ fun main() {
 ### copy 的使用
 - 注意: 默认生成的 toString, copy, hashCode, equals 等等, 只管主构造, 不管次构造
 - 注意: 使用 copy 的时候, 必须考虑次构造的内容
+- 注意: 必须是 数据类
 ```
 package com.bjknrt.newbie.example.controller
 
