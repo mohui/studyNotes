@@ -29,3 +29,6 @@
 - operator 运算符重载
 ### 枚举
 - enum 枚举
+- enum 枚举进阶版本
+- 代数数据类型
+- sealed 密封类
