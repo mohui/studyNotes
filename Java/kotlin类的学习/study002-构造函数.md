@@ -1,57 +1,8 @@
 # 类
-- 计算属性
-- 防范竞态条件
 - 主构造函数
 - constructor 次构造函数
+- copy 的使用
 
-## 计算属性
-```
-class Kt {
-    /**
-     * private string info = "how are you";
-     * public string getInfo() {
-     *     return this.info;
-     * }
-     */
-    val info = "how are you"
-    
-    // 计算属性, 下面这样写, get 函数覆盖了 field 内存本身, 相当于 field 失效了
-    val number : Int
-        get() = (1..1000).shuffled().first() // 从1到1000 取出随机值, 返回给 getNumber() 函数
-}
-fun main() {
-    // 背后隐式代码 System.out.println(new Kt().getInfo())
-    println(Kt().info)
-    
-    println(Kt().number)
-    
-    // 报错, 原因是 val 没有 setXXX 的函数,只有 getXXX  函数
-    // 背后隐式代码 new Kt().setInfo("hello word");
-    Kt().info = "hello word"
-}
-```
-
-## 防范竞态条件
-```
-class Kt {
-    val info: String ? = "hello"
-    
-    // 防范静竟态条件 当你调用成员,这个成员可能是 null 和 空字符串, 就必须采用 防范竞态条件, 这是 KT 的规范化
-    fun getShowInfo(): String {
-        return info?.let {
-            if (it.isBlank()) {
-                "这个是空字符串,请检查代码"
-            }
-            else {
-                "这个是字符串${it}"
-            }
-        } ?: "这个是null,请检查代码..."
-    }
-}
-fun main() {
-    println(Kt().getShowInfo)   
-}
-```
 
 ## 主构造函数
 ```
@@ -143,5 +94,48 @@ fun main() {
     Kt("张三", '男')
     println()
     Kt("张三", '男', 30)
+}
+```
+
+### copy 的使用
+- 注意: 默认生成的 toString, copy, hashCode, equals 等等, 只管主构造, 不管次构造
+- 注意: 使用 copy 的时候, 必须考虑次构造的内容
+```
+package com.bjknrt.newbie.example.controller
+
+data class Kt(var name: String, var age:Int) {
+    var coreInfo = ""
+    init {
+        println("主构造被调用了")
+    }
+
+    // 次构造
+    constructor(name:String): this(name, 99){
+        println("次构造被调用")
+        coreInfo = "增加非常核心的内容信息"
+    }
+
+    override fun toString(): String {
+        return "toString name: $name, age: $age, coreInfo: $coreInfo"
+    }
+    /**
+     * 生成的 toString 为什么只有两个参数
+     * 答: 默认生成的 toString, copy, hashCode, equals 等等, 只管主构造, 不管次构造
+     */
+}
+
+fun main(){
+
+    val p1 = Kt("奥特曼")
+
+    println(p1)
+    // toString name: 奥特曼, age: 99, coreInfo: 增加非常核心的内容信息
+
+    // 注意: 使用 copy 的时候, 必须考虑次构造的内容
+    val p2 = p1.copy("特斯拉", 49)
+    // toString name: 特斯拉, age: 49, coreInfo:
+
+    println(p2)
+
 }
 ```
