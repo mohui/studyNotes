@@ -162,5 +162,54 @@ data class Teacher(val name: String, val age: Int, val sex: Char)
 
 ## 泛型类型约束
 ```
+package com.bjknrt.newbie.example.controller
+// 祖宗类, 顶级父类
+open class MyAnyClass(name: String)
+// 父类
+open class PersonClass(name: String) : MyAnyClass(name = name)
+// 子类
+class StudentClass(name: String) : PersonClass(name = name)
+class TeacherClass(name: String) : PersonClass(name = name)
+// 其他类
+class DogClass(name: String)
+
+
+/**
+ * 加: PersonClass 就该有两个报错  他们不是 PersonClass 的 子集和自己
+ * 1. PersonClass 相当于 Java 的 T extends PersonClass
+ * 2. PersonClass 本身与 PersonClass 的所有子类都可以使用, 其他的类都不能兼容
+ */
+class Kt<T: PersonClass>(private val inputTypeValue: T, private val isR: Boolean = true) {
+    // 瓦能耐对象返回器
+    fun getObj() = inputTypeValue.takeIf { isR }
+}
+
+
+fun main(){
+    // 祖宗类, 顶级父类
+    val any = MyAnyClass("界王神")
+    // 父类
+    val per = PersonClass("界王")
+    // 子类
+    val stu = StudentClass("孙悟空")
+    val tea = TeacherClass("比克")
+    // 其他类
+    val dog = DogClass("猫仙人")
+
+    //    val r1 = Kt(any).getObj()
+    //    println(r1)
+    val r2 = Kt(per).getObj()
+    println(r2)
+    val r3 = Kt(stu).getObj()
+    println(r3)
+    val r4 = Kt(tea).getObj()
+    println(r4)
+    //    val r5 = Kt(dog).getObj()
+    //    println(r5)
+
+
+    println()
+}
+
 
 ```
