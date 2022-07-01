@@ -2,6 +2,7 @@
 - 定义泛型类
 - 泛型函数学习
 - 泛型变换实战
+- 泛型类型约束
 
 ## 定义泛型类
 ```
@@ -104,8 +105,6 @@ fun <T> show(item: T) {
 ```
 package com.bjknrt.newbie.example.controller
 
-import java.util.IllegalFormatCodePointException
-
 /**
  * 1. 类 isMap map takeIf map 是什么类型
  * 2. map int -> str 最终接收的是什么类型
@@ -158,5 +157,10 @@ fun main(){
 
 data class Student(val name: String, val age: Int, val sex: Char)
 data class Teacher(val name: String, val age: Int, val sex: Char)
+
+```
+
+## 泛型类型约束
+```
 
 ```
