@@ -1,5 +1,6 @@
 # 泛型
 - 定义泛型类
+- 泛型函数学习
 
 ## 定义泛型类
 ```
@@ -33,4 +34,67 @@ fun main(){
 
     println()
 }
+```
+
+## 泛型函数学习
+```
+package com.bjknrt.newbie.example.controller
+
+/**
+ * 1. 万能对象返回器 Boolean 来控制是否返回 运用 takeIf
+ * 2. 四个对象 打印
+ * 3. 对象打印 + run + ?:
+ * 4. 对象打印 + apply + ?:
+ * 5. show(t: T) + apply + ?:
+ */
+class Kt<T>(private val isR: Boolean, private val obj: T) {
+    fun getObj() = obj.takeIf { isR } // true 返回本身 false: 返回null
+}
+
+data class Student(val name: String, val age: Int, val sex: Char)
+data class Teacher(val name: String, val age: Int, val sex: Char)
+
+fun main(){
+    val stu1 = Student("孙悟空", 9, '男')
+    val stu2 = Student("克林", 8, '男')
+
+    val tea1 = Teacher("龟仙人", 308, '男')
+    val tea2 = Teacher("猫仙人", 1000, '男')
+
+    println(Kt(true, stu1).getObj())
+
+    println()
+
+    println(Kt(false, stu1).getObj() ?: "万能返回器返回null")
+
+    // 3. 对象打印 + run + ?:
+    val r = Kt(true, stu2).getObj()?.run {
+        println("run 万能对象: $this")
+    } ?: println("run 万能返回器返回null")
+
+    // 4. 对象打印 + apply + ?:
+    val r3: Teacher = Kt(true, tea1).getObj().apply {
+        if (this === null) {
+            println("apply 万能返回器返回null")
+        } else {
+            println("apply 万能对象: $this")
+        }
+    }!!
+
+
+    println()
+
+    show("天津饭")
+    show(null)
+
+    println()
+}
+
+fun <T> show(item: T) {
+    // 因为also返回它本身, 和?: 后的unit 冲突 所以类型可以是any
+    var r: Any = item?. also {
+        println("also 的万能对象 $it")
+    } ?: println("also 万能返回器返回null")
+}
+
 ```
