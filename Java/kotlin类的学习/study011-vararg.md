@@ -1,8 +1,12 @@
 # vararg
 - vararg 动态参数
+- [] 操作符学习
 
 
 ## vararg 动态参数
+1. 泛型是很大的范围类型, 可以接收很多类型, 也可以接受 null, 但是接收null后,要处理好
+2. String? 能够接受 "hello" 字符串, 还可以接收null, 所以 String? 比 String 工能强大
+3. 异步处理泛型接收, 都用 String? 处理规范化
 ```
 package com.bjknrt.newbie.example.controller
 
@@ -49,6 +53,26 @@ fun main(){
         it.toString().length
     }
     println("第1个元素的长度是$r")
+}
+```
+
+## [] 操作符学习
+```
+package com.bjknrt.newbie.example.controller
+
+class Kt<INPUT>(vararg objects: INPUT, var isR: Boolean = true) {
+    private val objectArray: Array<out INPUT> = objects
+
+    operator fun get(index: Int) = objectArray[index].takeIf { isR }
+}
+
+// [] 操作符学习
+
+fun main(){
+
+    val p = Kt("张三", "张伟", "孙悟空", "猪八戒", null)
+
+    println("元素${p[2]}")
 }
 
 
