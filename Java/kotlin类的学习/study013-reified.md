@@ -1,7 +1,12 @@
 # reified
-- reified学习
+- reified 学习
 
-## reified学习
+## reified 学习
+> reified 关键字的使用很简单： 
+> 在泛型类型前面增加 reified 修饰 
+> 在方法前面增加 inline
+
+
 ```
 package com.bjknrt.newbie.example.controller
 
