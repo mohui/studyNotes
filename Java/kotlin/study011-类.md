@@ -48,3 +48,5 @@
 - out 协变学习
 - in 逆变学习
 - out和in的运用
+### reified
+- reified学习
