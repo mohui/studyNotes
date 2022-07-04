@@ -106,7 +106,80 @@ fun main(){
 
 - 默认情况下, 泛型具体处的父类 是不可以赋值给 泛型声明处的子类的
 - in: 泛型具体出的父类 是可以赋值给 泛型声明处的子类
+```
+package com.bjknrt.newbie.example.controller
 
+/**
+ * 协变学习
+ */
+// 生产者 out T 协变 [out T 此泛型能够被获取, 读取, 所以是 out]
+interface Producer<out T> {
+    // out T 代表整个生产者类里面, 这个 T 只能被读取, 不能被修改
+    /**
+     * 不能被修改, 编译不通过
+     * fun consumer(item: T)
+     */
+
+    // 只能被读取
+    fun producer(): T
+
+}
+
+// 消费者 in T 逆变 [in T 此泛型只能被修改, 更新 所以是 in]
+interface Consumer<in T> {
+    // in T 代表整个消费者类里面, 这个 T 只能被更改,修改, 不能被读取
+    fun consumer(item: T)
+    /**
+     * 不能被读取
+     * fun producer(): T
+     */
+}
+
+// 生产者 和 消费者 T 默认情况下, 是不变
+interface ProducerAndConsumer<T> {
+    //  能被修改
+    fun consumer(item: T)
+    // 能被读取
+    fun producer(): T
+}
+
+open class Animal // 动物
+open class Humanity:  Animal()// 人类
+open class Man: Humanity() // 男人
+open class WoMan: Humanity() // 女人
+
+// >>>>>>>>>>>>>>>>>>>>>>> 协变,所以只管生产者
+class ConsumerClass1: Consumer<Animal> {
+    override fun consumer(item: Animal) {
+        println("消费者 Animal")
+    }
+}
+
+class ConsumerClass2: Consumer<Humanity> {
+    override fun consumer(item: Humanity) {
+        println("消费者 Humanity")
+    }
+}
+class ConsumerClass3: Consumer<Man> {
+    override fun consumer(item: Man) {
+        println("消费者 Man")
+    }
+}
+class ConsumerClass4: Consumer<WoMan> {
+    override fun consumer(item: WoMan) {
+        println("消费者 WoMan")
+    }
+}
+fun main(){
+    //    父类泛型对象         =   子类泛型对象
+    val p1: Consumer<Man> = ConsumerClass1() // ConsumerClass1 它传递 Animal, 用 Man 接收, 居然可以, 原因是 in
+    val p2: Consumer<WoMan> = ConsumerClass2() // ConsumerClass2 它传递 Humanity, 用 WoMan 接收, 居然可以, 原因是 in
+    val p3: Consumer<Man> = ConsumerClass3() // ConsumerClass3 它传递 Man, 用 Man 接收, 
+    val p4: Consumer<WoMan> = ConsumerClass4() // ConsumerClass4 它传递 WoMan, 用 WoMan 接收
+
+    println()
+}
+```
 
 ## out和in的运用
 - 声明处泛型: in T, out T 声明处指定关系, 这个是 Java 没有的功能
