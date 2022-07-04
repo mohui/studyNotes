@@ -8,6 +8,8 @@
 
 ## out 协变学习
 - 协变: 父类 泛型声明处 可以接收 子类 泛型具体处
+- out T 代表整个类里面, 这个 T 只能被读取, 不能被修改
+
 - 泛型默认情况下, 泛型的子类对象 不可以赋值给 泛型的父类对象
 - 泛型默认情况下, 泛型具体处的子类对象 不可以赋值给 泛型声明处的父类对象
 - out: 泛型的子类对象 可以赋值给 泛型的父类对象
@@ -20,17 +22,33 @@ package com.bjknrt.newbie.example.controller
  */
 // 生产者 out T 协变 [out T 此泛型能够被获取, 读取, 所以是 out]
 interface Producer<out T> {
+    // out T 代表整个生产者类里面, 这个 T 只能被读取, 不能被修改
+    /**
+     * 不能被修改, 编译不通过
+     * fun consumer(item: T)
+     */
+
+    // 只能被读取
+    fun producer(): T
 
 }
 
 // 消费者 in T 逆变 [in T 此泛型只能被修改, 更新 所以是 in]
 interface Consumer<in T> {
-
+    // in T 代表整个消费者类里面, 这个 T 只能被更改,修改, 不能被读取
+    fun consumer(item: T)
+    /**
+     * 不能被读取
+     * fun producer(): T
+     */
 }
 
 // 生产者 和 消费者 T 默认情况下, 是不变
-interface ProducerAndConsumer {
-
+interface ProducerAndConsumer<T> {
+    //  能被修改
+    fun consumer(item: T)
+    // 能被读取
+    fun producer(): T
 }
 
 open class Animal // 动物
@@ -38,6 +56,32 @@ open class Humanity:  Animal()// 人类
 open class Man: Humanity() // 男人
 open class WoMan: Humanity() // 女人
 
+// >>>>>>>>>>>>>>>>>>>>>>> 协变,所以只管生产者
+class ProducerClass1: Producer<Animal> {
+    override fun producer(): Animal {
+        println("生产者 Animal")
+        return Animal()
+    }
+}
+
+class ProducerClass2: Producer<Humanity> {
+    override fun producer(): Humanity {
+        println("生产者 Humanity")
+        return Humanity()
+    }
+}
+class ProducerClass3: Producer<Man> {
+    override fun producer(): Man {
+        println("生产者 Man")
+        return Man()
+    }
+}
+class ProducerClass4: Producer<WoMan> {
+    override fun producer(): WoMan {
+        println("生产者 WoMan")
+        return WoMan()
+    }
+}
 /**
  * 1. 泛型默认情况下, 泛型的子类对象 不可以赋值给 泛型的父类对象
  * 2. 泛型默认情况下, 泛型具体处的子类对象 不可以赋值给 泛型声明处的父类对象
@@ -46,15 +90,20 @@ open class WoMan: Humanity() // 女人
  * 5. 协变: 父类 泛型声明处 可以接收 子类 泛型具体处
  */
 fun main(){
+    //    父类泛型对象         =   子类泛型对象
+    val p1: Producer<Animal> = ProducerClass1() // ProducerClass1 它本来就是传递 Animal, 当然可以
+    val p2: Producer<Animal> = ProducerClass2() // ProducerClass2 它传递 Humanity, 它也可以的原因是 out
+    val p3: Producer<Animal> = ProducerClass3() // ProducerClass3 它传递 Man, 它也可以的原因是 out
+    val p4: Producer<Animal> = ProducerClass4() // ProducerClass4 它传递 WoMan, 它也可以的原因是 WoMan
 
     println()
 }
-
-
 ```
 
 ## in 逆变学习
 - 逆变: 子类 泛型声明处 可以接收 父类 泛型具体处
+- in T 代表整个类里面, 这个 T 只能被更改 修改, 不能被读取
+
 - 默认情况下, 泛型具体处的父类 是不可以赋值给 泛型声明处的子类的
 - in: 泛型具体出的父类 是可以赋值给 泛型声明处的子类
 
