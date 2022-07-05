@@ -23,6 +23,20 @@
 1. also 函数返回类型, 永远都是 str 本身, 此条和 apply 一模一样
 2. also 函数的 匿名函数里面持有的是 it == str, 此条和 let 一模一样
 
+- let 与 apply 内部源码院里分析
+inline fun <I, O> I.let(lambda:(I) -> O) = lambda(this)
+1. let 的返回类型是 根据匿名函数的变化而变化(lambda 的返回类型变化而变化)
+2. 匿名函数里面持有 it == I == info本身
+
+inline fun<I> I.apply(lambda: I.() -> Unit): I {  
+    lambda()  
+    return this  
+}
+1. apply 的返回类型是 永远都是I(所以你可以链式调用),
+2. lambda 的返回类型无法变化, 你写的是 Unit, 并且 没有和 lambda 关联返回类型
+3. 匿名函数持有的是 this == I == info本身
+
+
 ## 内联函数
 #### 内联函数 inline
 - 函数使用lambda作为参数, 就需要声明成内联
@@ -69,6 +83,36 @@ inline fun login(
 2. also{ 持有 it it.setFilexxx() }
 - 应用点
 1. 链式调用
+> apply 函数详解
+```
+package com.bjknrt.newbie.example.controller
+
+import java.io.File
+
+fun main(){
+     val file = File("/Users/wanghehui/Desktop/123/其他/whh.txt")
+          .mApply {
+               setReadable(true)
+               setWritable(true)
+               println("${readLines()}")
+          }
+     println()
+}
+
+/**
+ * private: 私有化
+ * inline: 因为我们的函数是高阶函数, 需要使用 内联 inline 对 lambda 进行优化处理, 提高性能
+ * fun<INPUT>: 函数中声明一个泛型
+ * INPUT.mApply 让所有的类型 都可以 xxx.mApply 泛型扩展
+ * INPUT.() -> Unit: 让我们的匿名函数里面持有 this , 在 lambda 里面不需要返回值, 因为永远都是返回 INPUT 本身
+ * lambda(this): 默认就有this
+ * 返回 this 的目的是可以链式调用
+ */
+private inline fun <INPUT> INPUT.mApply(lambda: INPUT.() -> Unit): INPUT {
+     lambda(this) // 省略 this
+     return this
+}
+```
 #### also内置函数
 - 这两个函数用法相同,区别apply是this, also是it
 
