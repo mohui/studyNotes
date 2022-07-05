@@ -4,6 +4,7 @@
 - 泛型扩展函数
 - 扩展属性
 - 可空类型扩展
+- 扩展文件
 
 ## 扩展函数学习
 ```
@@ -177,5 +178,46 @@ fun main(){
 
      val name = "孙悟空"
      name.outputStringValueFun("我是默认值2")
+}
+```
+
+## 扩展文件
+- 外部文件
+```
+package com.bjknrt.newbie.example.controller
+
+/**
+ * 1. 扩展文件一般都是 public, 如果 private 外界无法使用
+ * 2. Iterable<E> 子类 set list 都可以用, 所以用父类
+ * 3. 本次扩展函数的作用是, 随机取第一个元素返回
+ */
+
+fun<E> Iterable<E>.randomItemValue() = this.shuffled().first();
+fun<E> Iterable<E>.randomItemValuePrintln() = println(this.shuffled().first())
+```
+- 使用文件
+```
+package com.bjknrt.newbie.example.controller
+
+// 导入扩展文件
+import com.bjknrt.newbie.example.controller.randomItemValue
+import com.bjknrt.newbie.example.controller.randomItemValuePrintln
+
+fun main(){
+     val list: List<String> = listOf("孙悟空", "贝吉塔", "猪八戒")
+     val set: List<Double> = listOf(12.3, 23.4, 34.5)
+
+     println(list.shuffled().first())
+     println(set.shuffled().first())
+
+     println()
+
+     println(list.randomItemValue())
+     println(set.randomItemValue())
+
+     println()
+
+     list.randomItemValuePrintln()
+     set.randomItemValuePrintln()
 }
 ```
