@@ -1,6 +1,7 @@
 # 扩展函数
 - 扩展函数学习
 - 扩展函数学习2
+- 泛型扩展函数
 
 ## 扩展函数学习
 ```
@@ -63,9 +64,22 @@ fun main(){
      sex.showPrintlnContent()
      println()
      "女".showPrintlnContent2().showPrintlnContent2().showPrintlnContent2()
-     /**
+    println()
+}
+```
 
-     */
+## 泛型扩展函数
+```
+package com.bjknrt.newbie.example.controller
+// string类型就输出长度
+fun <T> T.showContentInfo() = println(if (this is String) "字符串长度$length, 时间: ${System.currentTimeMillis()}" else "不是字符串,是: $this")
+
+fun main(){
+     45.showContentInfo()
+     "hello".showContentInfo()
+     '男'.showContentInfo()
+     null.showContentInfo()
+     true.showContentInfo()
     println()
 }
 ```
