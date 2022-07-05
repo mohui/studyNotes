@@ -200,7 +200,8 @@ fun<E> Iterable<E>.randomItemValuePrintln() = println(this.shuffled().first())
 package com.bjknrt.newbie.example.controller
 
 // 导入扩展文件
-import com.bjknrt.newbie.example.controller.randomItemValue
+// as a 重命名扩展
+import com.bjknrt.newbie.example.controller.randomItemValue as a
 import com.bjknrt.newbie.example.controller.randomItemValuePrintln
 
 fun main(){
@@ -212,8 +213,8 @@ fun main(){
 
      println()
 
-     println(list.randomItemValue())
-     println(set.randomItemValue())
+     println(list.a())
+     println(set.a())
 
      println()
 
