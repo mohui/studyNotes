@@ -3,6 +3,7 @@
 - 扩展函数学习2
 - 泛型扩展函数
 - 扩展属性
+- 可空类型扩展
 
 ## 扩展函数学习
 ```
@@ -154,5 +155,27 @@ fun main(){
      // 字符串属性函数调用
      "孙悟空".stringAllInfoValueVal
           .showPrintln().showPrintln().showPrintln()
+}
+```
+
+## 可空类型扩展
+```
+package com.bjknrt.newbie.example.controller
+
+/**
+ * 可空类型扩展函数
+ * 如果是null, 就输出默认值
+ *
+ * 对 String? == 可空类型 进行函数扩展, 并且有备用值
+ */
+fun String?.outputStringValueFun(defaultValue: String) = println(this ?: defaultValue)
+
+fun main(){
+     // 可空类型
+     val infoValue: String? = null
+     infoValue.outputStringValueFun("我是默认值1")
+
+     val name = "孙悟空"
+     name.outputStringValueFun("我是默认值2")
 }
 ```
