@@ -83,3 +83,33 @@ fun main(){
     println()
 }
 ```
+
+## 标准和泛型 函数扩展
+```
+package com.bjknrt.newbie.example.controller
+
+fun main(){
+     val r = "hello".mLet {
+          "ok"
+     }
+     2123.mLet {
+          it
+     }
+     '男'.mLet {
+          it
+     }
+    println()
+     "hello".let { it }
+}
+/**
+ * 1. private: 私有化
+ * 2. inline: 我们的函数是告诫函数, 所以用到内联, 做lambda的优化, 性能提高
+ * 3. fun<I, O>:  在函数中,申明两个泛型, 函数泛型, I输入Input, O 输出 Output
+ * 4. I.mLet: 对 I 输入 Input 进行函数扩展, 扩展函数的名称是 mLet , 意味着 所有的类型, 万能类型, 都可以使用 xxx.mLet
+ * 5. lambda: (I) -> 0 (I 输入) -> O 输出
+ * 6. :O 会根据用户的返回类型 变化而变化
+ * lambda(this): I 进行函数扩展, 在整个扩展函数里面 this == I 本身
+ */
+
+private inline fun<I, O> I.mLet(lambda: (I) -> O): O = lambda(this)
+```
