@@ -2,6 +2,7 @@
 - 扩展函数学习
 - 扩展函数学习2
 - 泛型扩展函数
+- 扩展属性
 
 ## 扩展函数学习
 ```
@@ -112,4 +113,46 @@ fun main(){
  */
 
 private inline fun<I, O> I.mLet(lambda: (I) -> O): O = lambda(this)
+```
+
+## 扩展属性
+```
+package com.bjknrt.newbie.example.controller
+
+val myStr: String = "AA";
+
+/**
+ * 背后代码
+public final class WhhKt {
+     @NotNull
+     private static final String myStr = "AA";
+
+     @NotNull
+     public static final String getMyStr() {
+     return myStr;
+     }
+}
+ */
+
+val String.myInfo: String
+     get() = "AA"
+
+// 打印输出, 并且链式调用, (只有String有资格这样)
+fun String.showPrintln(): String {
+     println("打印输出 并且链式调用(只有string有资格这样), 内容$this")
+     return this
+}
+
+val String.stringAllInfoValueVal
+     get() = "当前${System.currentTimeMillis()}时间被调用, 值是: $this, 字符串长度是 $length"
+
+fun main(){
+     val str: String = "王网"
+     println(str.myInfo)
+     str.showPrintln().showPrintln()
+
+     // 字符串属性函数调用
+     "孙悟空".stringAllInfoValueVal
+          .showPrintln().showPrintln().showPrintln()
+}
 ```
