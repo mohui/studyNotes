@@ -6,6 +6,23 @@
 - run 函数
 - with 函数
 
+## 函数总结
+- info.apply
+1. apply 函数返回类型, 永远都是 info 本身, 此条和 also 一模一样
+2. apply 函数的 匿名函数里面持有的是 this == info 本身, 此条和 run 一模一样
+- let
+1. let函数返回类型, 是根据匿名函数最后一条的变化而变化, 此条和 run 一模一样
+2. let函数的匿名函数里面持有的是 it == 集合本身, 此条和 also 一模一样
+- str.run
+1. run 函数返回类型, 是根据匿名函数最后一行的变化而变化 此条和 let 一模一样
+2. run 函数的匿名函数里面持有的事 this == str 本身, 此条和 apply 一模一样
+- with(str), with 和 run 基本上一致, 只不过就是使用时候不同
+1. with 函数返回类型, 是根据匿名函数最后一条变化而变化的 此条和 let 一模一样
+2. with 函数的 匿名函数里面持有的是 this == str 本身, 此条和 apply 一模一样
+- str.also
+1. also 函数返回类型, 永远都是 str 本身, 此条和 apply 一模一样
+2. also 函数的 匿名函数里面持有的是 it == str, 此条和 let 一模一样
+
 ## 内联函数
 #### 内联函数 inline
 - 函数使用lambda作为参数, 就需要声明成内联
