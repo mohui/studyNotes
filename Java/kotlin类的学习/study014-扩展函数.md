@@ -1,5 +1,6 @@
 # 扩展函数
 - 扩展函数学习
+- 扩展函数学习2
 
 ## 扩展函数学习
 ```
@@ -28,6 +29,40 @@ fun main(){
      "这是我们的日志信息".showStr()
      "hi".showStr()
 
+     /**
+
+     */
+    println()
+}
+```
+## 扩展函数学习2
+```
+package com.bjknrt.newbie.example.controller
+
+data class ResponseResult1(val msg: String, val code: Int)
+data class ResponseResult2(val msg: String, val code: Int)
+data class ResponseResult3(val msg: String, val code: Int)
+data class ResponseResult4(val msg: String, val code: Int)
+fun Any.showPrintlnContent() = println("当前内容是: $this")
+fun Any.showPrintlnContent2(): Any {
+     println("当前内容是: $this")
+     return this
+}
+
+fun main(){
+     ResponseResult1("login success", 200).showPrintlnContent()
+     "孙悟空".showPrintlnContent()
+     "贝吉塔".showPrintlnContent()
+     val number1 = 99999;
+     number1.showPrintlnContent()
+     val number2 = 99999.9;
+     number2.showPrintlnContent()
+     val number3 = 99999.9f;
+     number3.showPrintlnContent()
+     val sex = '男'
+     sex.showPrintlnContent()
+     println()
+     "女".showPrintlnContent2().showPrintlnContent2().showPrintlnContent2()
      /**
 
      */
