@@ -61,6 +61,14 @@ inline fun login(
 ```
 
 #### apply内置函数
+- 相同点:
+1. apply 与 also 返回类型是一样的, 他们永远都是返回 info 本身
+2. 匿名函数,最后一行无法作为返回值,不影响函数 
+- 不同点
+1. 匿名函数里面, apply { 持有 this setFilexxx() }
+2. also{ 持有 it it.setFilexxx() }
+- 应用点
+1. 链式调用
 #### also内置函数
 - 这两个函数用法相同,区别apply是this, also是it
 
@@ -89,6 +97,14 @@ info.apply {
 
 ## 具名函数调用 
 
+#### let 函数
+- 相同点:
+1. run 与 let 返回类型是一样的, 都会根据匿名函数最后一行返回类型而决定
+2. run 与 let 的返回类型 是根据匿名函数最后一行变化而变化
+- 不同点
+1. 匿名函数里面 run 持有 this, let 持有 it
+- 应用点
+1. 
 #### run 函数
 * 函数返回类型会根据匿名函数最后一行变化而变化
 * 里面持有的是 this == str本身, 和apply一样
