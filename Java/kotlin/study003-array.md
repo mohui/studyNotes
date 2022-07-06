@@ -1,19 +1,7 @@
 # 数组
 > Kotlin语言中的各种数组类型,虽然是引用类型, 背后可以编译成Java基本数据类型
 - IntArray
-
-## map
-1. map 可变集合
-2. map 可变集合的添加
-3. map 可变集合的减少
-4. flatMap
-
-## 合并数组
-1. zip 合并函数
-
 - filter 过滤
-- forEach 用法
-- for 用法
 - getOrPut 用法
 
 | 类型           | 关键字            |
@@ -27,6 +15,19 @@
 | BooleanArray | booleanArrayOf |
 | Array<对象类型>  | arrayOf        |
 | Map          | mapOf          |
+
+## map
+1. map 可变集合
+2. map 可变集合的添加
+3. map 可变集合的减少
+4. flatMap
+
+## for
+- forEach 用法
+- for 用法
+
+## 合并数组
+1. zip 合并函数
 
 ## IntArray
 ```
@@ -53,33 +54,9 @@ fun main(){
      println(strList1)
 
 }
-
 ```
 
-## forEach 用法
-```
-// 第一种
-list1.forEach {
-    println("key: ${it.key} value: ${it.value}")
-}
 
-// 第二种
-list1.forEach { (k, v) ->
-    println("key: $k value: $v")
-}
-
-// 第三种(不推荐)
-list1.forEach { k, v ->
-    println("key: $k value: $v")
-}
-```
-
-## for 用法
-```
-for (it in list1) {
-    println("key: ${it.key} value: ${it.value}")
-}
-```
 
 ## getOrPut 用法
 ```
@@ -88,7 +65,3 @@ println(list.getOrPut("swk") {800})
 // 如果存在, 直接获取, 默认值不起效果
 println(list.getOrPut("wyb") {800})
 ```
-
-
-
-
