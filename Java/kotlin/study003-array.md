@@ -72,7 +72,18 @@ list -= "whq"
 ### flatMap
 - flatMap 相当于 List<List<String>> 集合的集合, 有嵌套关系
 ```
+package com.bjknrt.newbie.example.controller
 
+fun main() {
+     val list = listOf(
+          listOf(1, 2, 3),
+          listOf(4, 5, 6),
+          listOf(7, 2, 1)
+     )
+     
+     println(list) // [[1, 2, 3], [4, 5, 6], [7, 2, 1]]
+     println(list.flatMap { it }) //[1, 2, 3, 4, 5, 6, 7, 2, 1]
+}
 ```
 
 ## filter 过滤
