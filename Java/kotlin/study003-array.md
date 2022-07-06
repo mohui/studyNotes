@@ -132,6 +132,7 @@ println(list.getOrPut("wyb") {800})
 ```
 
 ## zip 合并函数
+- 原理: 就是把 第一个集合 和 第二个集合 合并起来, 创建新的集合, 并返回
 ```
 package com.bjknrt.newbie.example.controller
 
