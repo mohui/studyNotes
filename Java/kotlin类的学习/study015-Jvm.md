@@ -1,4 +1,7 @@
 # Jvm 的学习
+- JvmName
+- JvmField
+- JvmOverloads
 
 ## JvmName
 - 必须写在报名的外边
@@ -36,7 +39,7 @@ package com.bjknrt.newbie.example.controller
 
 class Person {
      @JvmField
-     val name = listOf("zhangSan", "liSi", "wangWu")
+     val names = listOf("zhangSan", "liSi", "wangWu")
 }
 
 /**
@@ -60,4 +63,47 @@ public final class Person {
      public final List name = CollectionsKt.listOf(new String[]{"zhangSan", "liSi", "wangWu"});
 }
  */
+```
+
+## JvmOverloads
+- 编译器环节, 专门重载一个函数, 给Java用, 相当于 Java 享用 Kt 的默认参数
+```
+package com.bjknrt.newbie.example.controller
+
+
+fun show(name: String, age: Int = 20, sex: Char = '男') {
+     println("name: $name, age: $age, sex: $sex")
+}
+
+@JvmOverloads
+fun toast(name: String, age: Int = 20, sex: Char = '男') {
+     println("name: $name, age: $age, sex: $sex")
+}
+
+fun main() {
+     show("张三")
+     toast("李四")
+}
+
+```
+
+## JvmStatic
+- JvmStatic 会在外边封装一个函数, 让 Java 像 Kt 一样调用
+```
+package com.bjknrt.newbie.example.controller
+
+class MyObject {
+     companion object {
+          @JvmField
+          val TARGET = "香山公园"
+          @JvmStatic
+          fun showAction(name: String) = println("$name 想去 $TARGET 玩耍")
+     }
+}
+
+fun main() {
+     MyObject.TARGET
+     MyObject.showAction("张三三")
+}
+
 ```
