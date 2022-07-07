@@ -15,6 +15,9 @@
 | Array<对象类型>  | arrayOf        |
 | Map          | mapOf          |
 
+## 内置函数
+- shuffled 随机打乱
+
 ## map
 1. map 可变集合
 2. map 可变集合的添加
