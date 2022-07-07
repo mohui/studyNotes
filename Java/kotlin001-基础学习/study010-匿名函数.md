@@ -78,3 +78,22 @@ val method1 = {
 }
 println(method1())
 ```
+
+#### 定义参数是函数的函数
+```
+package com.bjknrt.newbie.example.controller
+
+fun main() {
+
+    val xiu: (String, Int) -> String = { name: String, hour: Int ->
+        "${name}修炼了${hour}年"
+    }
+    showOnBoard("孙悟空", xiu)
+}
+
+fun showOnBoard(name: String, getNameYear: (String, Int) -> String) {
+    val year: Int = (1..1000).shuffled().first()
+    println(getNameYear(name, year))
+}
+
+```
