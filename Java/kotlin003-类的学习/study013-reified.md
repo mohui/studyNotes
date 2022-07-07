@@ -1,18 +1,30 @@
 # reified
 - reified 学习
+- inline 内联
+
+
+## inline 内联
+- 在 JVM  上, 定义的 lambda 会以对象实例的形式存在,
+- JVM 会为所有同 lambda 打交道的变量分配内存, 这就产生了内存开销
+- lambda 的内存开销会带来验证的性能问题
+- 
+- 使用内联, JVM就不需要使用 lambda 对象实例了, 因而避免了变量内存分配,
+- 哪里需要使用 lambda, 编译器就会将函数体 复制粘贴到哪里
+- 
+- 使用 lambda 的递归函数无法内联, 因为会导致复制粘贴无限循环, 编译会发出警告
+```
+
+```
 
 ## reified 学习
-> reified 关键字的使用很简单： 
-> 在泛型类型前面增加 reified 修饰 
-> 在方法前面增加 inline
-
+- reified 关键字的使用很简单： 
+- 在泛型类型前面增加 reified 修饰 
+- 在方法前面增加 inline
 
 ```
 package com.bjknrt.newbie.example.controller
 
-/**
-* reified 关键字学习
-  */
+  // reified 关键字学习
   data class ObjectClass1(val name: String, val age: Int, val study: String)
   data class ObjectClass2(val name: String, val age: Int, val study: String)
   data class ObjectClass3(val name: String, val age: Int, val study: String)
