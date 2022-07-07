@@ -1,7 +1,6 @@
 # 数组
 > Kotlin语言中的各种数组类型,虽然是引用类型, 背后可以编译成Java基本数据类型
 - IntArray
-- filter 过滤
 - getOrPut 用法
 
 | 类型           | 关键字            |
@@ -30,34 +29,13 @@
 1. zip 合并函数
 2. fold 累加
 
+## filter 过滤
+1. filter 过滤
+
 ## IntArray
 ```
 val list: IntArray = intArrayOf(11, 12, 13, 14, 15, 16);
 ```
-
-## filter 过滤
-```
-package com.bjknrt.newbie.example.controller
-
-fun main(){
-     val list: List<Int> = listOf<Int>(2, 4, 6, 5)
-     val list1 = list.filter {
-          it % 2 == 0
-     }
-     println(list1)
-
-
-     val strList = listOf<String>("周一", "周二", "下周一", "周三", "下周四")
-     val strList1 = strList.filter {
-          // it.startsWith("周")
-          it.contains("一")
-     }
-     println(strList1)
-
-}
-```
-
-
 
 ## getOrPut 用法
 ```
