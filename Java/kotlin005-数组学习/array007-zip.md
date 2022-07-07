@@ -1,5 +1,6 @@
 # 合并数组
 - zip 合并函数
+- fold 累加器
 
 ## zip 合并函数
 - 原理: 就是把 第一个集合 和 第二个集合 合并起来, 创建新的集合, 并返回
@@ -35,6 +36,25 @@ fun main(){
 
      println()
 
+}
+
+```
+
+## fold 累加
+- accumulator 累加器
+```
+package com.bjknrt.newbie.example.controller
+
+fun main() {
+     val list = listOf(1, 2, 6, 4, 5, 5)
+
+     val sum = list.fold(0) { accumulator, pre ->
+          println("累加值: $accumulator")
+          println("当前值: $pre")
+          accumulator + pre
+     }
+
+     println(sum)
 }
 
 ```
