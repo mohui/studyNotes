@@ -2,6 +2,7 @@
 - JvmName
 - JvmField
 - JvmOverloads
+- JvmStatic
 
 ## JvmName
 - 必须写在报名的外边
