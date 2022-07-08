@@ -5,6 +5,7 @@
 - 具名函数调用
 - run 函数
 - with 函数
+- takeIf 和 takeUnless
 
 ## 函数总结
 - info.apply
@@ -185,6 +186,7 @@ fun isLong(str: String) = if (str.length > 5) true else false
 - name.takeUnless{true / false}, false: 返回name本身, true 返回null
 
 #### takeIf 函数应用
-
+- name.takeIf{true / false}, true: 返回name本身, false 返回null
 #### takeUnless 函数应用
+- name.takeUnless{true / false}, false: 返回name本身, true 返回null
 
