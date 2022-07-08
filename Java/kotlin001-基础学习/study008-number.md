@@ -60,6 +60,7 @@ num.times(4) // 36
 ```
 package com.bjknrt.newbie.example.controller
 
+
 fun Int.isPrime(): Boolean {
     (2 until this).map {
         if(this % it  == 0) return false
@@ -68,8 +69,18 @@ fun Int.isPrime(): Boolean {
 }
 
 fun main() {
-    val toList: List<Int> = (1..1000).toList().filter { it.isPrime() }.take(10);
+    val toList: List<Int> = (1..1000).toList().filter { it.isPrime() }.take(1000);
 
+    println(toList.count())
+    println(toList.size)
     println(toList)
+
+    val aa: Sequence<Int> = generateSequence(2) {value ->
+        value + 1
+    }.filter { it.isPrime() }.take(1000)
+    println(aa.toList())
+    println(aa.toList().size)
 }
+
+
 ```
