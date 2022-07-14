@@ -115,3 +115,21 @@ const 本字段追加内容 = `update test set test_name = concat(test_name, '.d
 
 
 ```
+
+# 添加修改语句
+```sql
+
+insert into sms_code(phone, usage, code, created_at, updated_at)
+values (?, ?, ?, ?, ?)
+on conflict (phone, usage) do update
+set counts     = ?,
+code       = excluded.code,
+created_at = excluded.created_at,
+updated_at = excluded.updated_at;
+
+
+insert into staff_area_mapping(id, staff, area)
+values (?, ?, ?)
+on conflict (staff, area)
+  do update set updated_at = now()
+```
