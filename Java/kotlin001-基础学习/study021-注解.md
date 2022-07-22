@@ -21,6 +21,7 @@
 - 这里必须明确：@Autowired 是根据 类型 进行自动装配的，如果需要按名称进行装配，则需要配合@Qualifier使用；
 
 ## @Transactional
+- 事务注解
 
 ```markdown
 @Transactional(rollbackFor = [Exception::class])
