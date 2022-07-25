@@ -17,6 +17,8 @@
 
 ## 内置函数
 - shuffled 随机打乱
+- getOrPut
+- joinToString 数组分割成字符串
 
 ## map
 1. map 可变集合
@@ -38,12 +40,4 @@
 ## IntArray
 ```
 val list: IntArray = intArrayOf(11, 12, 13, 14, 15, 16);
-```
-
-## getOrPut 用法
-```
-// 如果不存在, 添加进去并获取
-println(list.getOrPut("swk") {800})
-// 如果存在, 直接获取, 默认值不起效果
-println(list.getOrPut("wyb") {800})
 ```
