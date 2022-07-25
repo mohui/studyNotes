@@ -1,5 +1,6 @@
-## 时间格式
+# 时间格式
 
+## 日期时间
 ### 获取当前日期时间
 ```
 val current = LocalDateTime.now()
@@ -13,14 +14,14 @@ val endTime = current.format(formatter2)
 val current = LocalDateTime.now() // 2022-07-20T13:37:56.979110
 ```
 
-
+## 时间
 ### 获取当前时间
 ```
 // 精度到毫秒
 val currentTime = LocalTime.now() // 13:37:56.997693
 
 // 精度到分钟
-val currentTime = LocalTime.now().truncatedTo(ChronoUnit.MINUTES) // 13:37
+val currentTimeStart = LocalTime.now().truncatedTo(ChronoUnit.MINUTES) // 13:37
 
 // 精度到分钟,但是会受到毫秒的影响, 毫秒可能会四舍五入到秒中,存在风险
 LocalDateTime.now().withSecond(0).toLocalTime() // 13:37:00.997693
@@ -37,14 +38,15 @@ val week = LocalDateTime.now().dayOfWeek.value // 数字 4
 val time = DateUtil.parseTime("12:11:12").toLocalDateTime().toLocalTime()
 ```
 
-### 时间加
+### 时间运算-加法
 ```
-val currentTime = LocalTime.now() // 12:20
-// 加1分钟
-val lastMinutesTime = LocalTime.now().plusMinutes(1) // 12:21
-// 加59秒
-val lastMinutesTime = LocalTime.now().plusSeconds(59)  // 12:20:59
+当前时间
+val currentTime = LocalTime.now() // 12:00:00.000000
 
+// 分钟的加法 -> 加一分钟
+val lastMinutesTime = LocalTime.now().plusMinutes(1) // 12:00
+// 秒的加法 -> 加59秒
+val lastMinutesTime = LocalTime.now().plusSeconds(59)  // 12:00:59
 ```
 
 #### 当前时间转为当前分钟的开始时间和结束时间
