@@ -4,7 +4,6 @@
 ### 获取当前日期时间
 ```
 val current = LocalDateTime.now()
-val week = current.dayOfWeek.name
 
 val formatter1 = DateTimeFormatter.ofPattern("HH:mm:00")
 val formatter2 = DateTimeFormatter.ofPattern("HH:mm:59")
