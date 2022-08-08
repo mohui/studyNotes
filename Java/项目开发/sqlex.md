@@ -1,6 +1,6 @@
 ## 增
 ### 新增修改语句
-```markdown
+```
 val result = table.saveOrUpdate(
             MrMedicationRemind(
                 id,
@@ -15,6 +15,27 @@ val result = table.saveOrUpdate(
                 current
             )
         )
+```
+### 新增必填和非必填的用法
+```
+
+dpmPatientInfoTable.save(
+    DpmPatientInfo.forInsert(
+        BigInteger.valueOf(11111),
+        "t2",
+        "MAN",
+        "123",
+        LocalDateTimeUtil.parse("2002-07-15T00:00:00"),
+        "123",
+        BigInteger.ONE,
+        BigInteger.ONE,
+        BigInteger.ONE
+    ).apply {
+        this.knHypertensionDiseaseTag = "HIGH"
+        this.knDiabetesDiseaseTag = "LOW"
+        this.knCerebralStrokeDiseaseTag = "HIGH"
+    }
+)
 ```
 ## 删
 
