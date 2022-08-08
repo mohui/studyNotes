@@ -54,4 +54,9 @@ Cron* -> 可以选,默认定时时间 cron 表达式
 JobHandler* ->
 
 ```
-5. 
+5. 应用
+```markdown
+
+    // xxl-job
+    implementation("com.xuxueli:xxl-job-executor-samples:2.3.1")
+```
