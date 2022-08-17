@@ -4,8 +4,9 @@ DROP TABLE 表名;
 DROP TABLE test;
 ```
 # 删除字段
-> test表名, hello 字段名
 ```sql
+-- test表名
+-- hello 字段名
 alter table test drop column if exists hello;
 
 ```
