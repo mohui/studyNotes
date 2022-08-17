@@ -1,11 +1,11 @@
 # nodejs简介
-<p>1: node.js 不是一种独立的语言,不是一个JavaScript框架,不是浏览器端的库, nodejs是一个可以让 JavaScript 运行在服务器端的开发平台。<p>
-<p>2: node.js 最大的特点就是采用异步式 I/O 与事件驱动的架构设计</p>
-<p>3: node.js 数据查询: db.query('SELECT * from some_table', function(res) {   res.output(); }); </p>
-<p>4: 第一个node.js程序 webstorm里创建test.js文件 console.log('Hello World'); 
-打开终端，进入 test.js 所在的目录，执行以下命令：node test.js 在终端中看到输出Hello World</p>
-<p>5: 连续两次control + c 可以退出node的REPL模式</p>
-<p>6: 创建package.json文件</p>
+1. node.js 不是一种独立的语言,不是一个JavaScript框架,不是浏览器端的库, nodejs是一个可以让 JavaScript 运行在服务器端的开发平台。
+2. node.js 最大的特点就是采用异步式 I/O 与事件驱动的架构设计
+3. node.js 数据查询: db.query('SELECT * from some_table', function(res) {   res.output(); }); 
+4. 第一个node.js程序 webstorm里创建test.js文件 console.log('Hello World'); 
+5. 打开终端，进入 test.js 所在的目录，执行以下命令：node test.js 在终端中看到输出Hello World
+6. 连续两次control + c 可以退出node的REPL模式
+7. 创建package.json文件
 
 ```
 {
@@ -37,16 +37,15 @@ server.listen(3000);
 console.log("HTTP server is listening at port 3000.");
 
 ```
+1. 在终端中运行这个脚本时，我们会发现它并不像 Hello World 一样结束后立即退出，而是一直等待，直到按下 Ctrl + C 才会结束。
+2. 这是因为 listen 函数中创建了事件监听器，使得 Node.js 进程不会退出事件循环
+3. 这段代码中，http.createServer 创建了一个 http.Server 的实例，将一个函数 作为 HTTP 请求处理函数。
+4. 这个函数接受两个参数，分别是请求对象( req )和响应对象 ( res )。  
+5. 在函数体内，res 显式地写回了响应代码 200 (表示请求成功)，  
+6. 指定响应头为 'Content-Type': 'text/html'，然后写入响应体 "Node.js"， 
+7. 通过 res.end 结束并发送。 
+8. 最后该实例还调用了 listen 函数，启动服务器并监听 3000 端口。
 
-1: 在终端中运行这个脚本时，我们会发现它并不像 Hello World 一样结束后立即退出，而是一直等待，直到按下 Ctrl + C 才会结束。    
-这是因为 listen 函数中创建了事件监听器，使得 Node.js 进程不会退出事件循环
-
->这段代码中，http.createServer 创建了一个 http.Server 的实例，将一个函数 作为 HTTP 请求处理函数。  
->这个函数接受两个参数，分别是请求对象( req )和响应对象 ( res )。  
->在函数体内，res 显式地写回了响应代码 200 (表示请求成功)，  
->指定响应头为 'Content-Type': 'text/html'，然后写入响应体 "Node.js"，
->通过 res.end 结束并发送。
->最后该实例还调用了 listen 函数，启动服务器并监听 3000 端口。
 ### http.Server
 http.Server 是一个基于事件的 HTTP 服务器，所有的请求都被封装为独立的事件， 开发者只需要对它的事件编写响应函数即可实现 HTTP 服务器的所有功能。
 它继承自 EventEmitter，提供了以下几个事件。
