@@ -40,6 +40,9 @@ export default {
       console.log("oldVal----", oldVal) // 李四
     })
     
+    // 可以试试这个
+    watch(() => user.name, (newVal, oldVal) =>{})
+    
     watchEffect(() => {
       console.log(user.name)
     })
