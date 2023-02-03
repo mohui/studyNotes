@@ -1,5 +1,8 @@
 # router学习笔记
-
+- 路由表, 是一个映射表. 一个路由就是一组映射关系
+- key-value => key: 表示路由, value: 可以为function 或者 Component
+- function: 后端路由
+- Component: 前端路由
 ## 安装 route
 ```
 npm install vue-router
