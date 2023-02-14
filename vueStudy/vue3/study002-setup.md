@@ -1,5 +1,5 @@
 # vue3
-
+[setup文档](https://cn.vuejs.org/api/sfc-script-setup.html)
 ## 语法糖
 ```vue
 <script setup></script>
