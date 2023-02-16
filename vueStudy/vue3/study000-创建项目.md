@@ -2,6 +2,7 @@ https://www.bilibili.com/video/BV1Su411q71n?p=7&spm_id_from=pageDriver&vd_source
 
 https://www.bilibili.com/video/BV1YW4y1V7UT/?p=2&spm_id_from=pageDriver&vd_source=39f266c622d872c7f9fb6ec3d2ad3a60
 
+[文档](https://cn.vuejs.org/api/sfc-script-setup.html)
 ### 根据vite创建项目
 ```
 npm init vite
