@@ -1,21 +1,13 @@
-- 路由核心: 改变URL, 但是页面不进行整体刷新, 路由理解为指向
+# 路由
+- 在src 下创建router文件夹
+- router-文件夹下创建文件router.ts
+- 在main中导入
 
-## 不同的历史模式
-### Hash 模式
-- createWebHashHistory: 有#
-### HTML5 模式
-- createWebHistory: 没有#
 
-## 路由
-- 路由表, 是一个映射表. 一个路由就是一组映射关系  
-- key-value => key: 表示路由, value: 可以为function 或者 Component
-- function: 后端路由
-- Component: 前端路由
-- alias: 取别名
-- props: 必须设置为true, 才能用props接收值
 
 
 ## 路由映射
+- src/router/index.ts
 - Home: 首页
 - About: 指定的路由
 - News: 参数正则校验
@@ -72,6 +64,17 @@ const routes = [
         component: About
     }
 ]
+```
+
+## main.js导入
+```ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App)
+    .use(router)
+    .mount('#app')
 ```
 
 ## 超链接跳转

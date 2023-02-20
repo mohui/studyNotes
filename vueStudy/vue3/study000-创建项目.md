@@ -98,3 +98,7 @@ createApp(App)
     .mount('#app')
 
 ```
+
+```yaml
+npm install axios -S 
+```
