@@ -5,6 +5,7 @@ https://github.com/exceljs/exceljs/blob/HEAD/README_zh.md#%E5%90%88%E5%B9%B6%E5%
 import {Workbook} from 'exceljs';
 
 async function exportExcel() {
+    const workBook = new Workbook();
     const workSheet = workBook.addWorksheet(`导出sheet名称`);
     // 定义第一行的内容数组[小项标题]
     const firstRow = ['', '合计', '', ''];
@@ -19,28 +20,53 @@ async function exportExcel() {
 }
 ```
 
-##### 导出备份
+## 导出
+- 特别注意,需要在配置文件development中配置路径
+```ts
+module.exports = {
+    unifs: [
+        {
+            path: '/ev', // 文件上传
+            type: 'local',
+            options: {
+                base: '/Users/wanghehui/projects/node/appraisal-server/tmp/ev',
+                external: {
+                    baseUrl: 'http://127.0.0.1:3000',
+                    prefix: '/ev',
+                    key: 'default'
+                }
+            }
+        }
+    ]
+}
+```
 ```javascript
+import * as Excel from 'exceljs';
 
 
-async function excelBuffer2(month) {
-    const buffer = (await excelBuffer(month)) as Buffer;
-    //初始化文件挂载
-    await initFS();
-    //写入本地
-    jobResult = `/manualExcel/${fileName}-${dayjs().format(
-        'YYYY-MM-DDTHH:mm:ss'
-    )}.xls`;
-    await unifs.writeFile(jobResult, buffer);
+async function excelBuffer(month) {
+    const workBook = new Excel.Workbook();
+    const workSheet = workBook.addWorksheet(`人员档案表格...`);
+    //添加标题
+    workSheet.addRow([
+        '机构名称',
+        '总分',
+        '身份证号',
+        '住址',
+        '性别',
+        '电话',
+        '人群分类',
+        '档案问题'
+    ]);
+    const fileName = '测试测试.xls';
+    return workBook.xlsx.writeBuffer();
 }
 
-
-async function excelBuffer3(month) {
-    const fileName = '测试';
-    const buffer = (await excelBuffer(month)) as Buffer;
-    const jobResult = `/manualExcel/${fileName}-${dayjs().format(
-        'YYYY-MM-DDTHH:mm:ss'
-    )}.xls`;
-    await unifs.writeFile(jobResult, buffer);
+export default class Evaluation {
+    async exportResult(year, area) {
+        const buffer = (await excelBuffer(year, area)) as Buffer;
+        const jobResult = `/ev/测试1.xls`;
+        await unifs.writeFile(jobResult, buffer);
+    }
 }
 ```
