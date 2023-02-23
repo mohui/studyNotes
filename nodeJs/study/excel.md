@@ -16,6 +16,8 @@ async function exportExcel() {
     workSheet.mergeCells('A1', 'A2');
     // 合并单元格 B1,C1,D1
     workSheet.mergeCells('B1', 'D1');
+    // 合并单元格 第一行第4个到第一行第6个
+    workSheet.mergeCells(1, 4, 1, 6);
     return workBook.xlsx.writeBuffer();
 }
 ```
