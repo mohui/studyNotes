@@ -12,6 +12,7 @@
 - About: 指定的路由
 - News: 参数正则校验
 - NotFound: 通过正则, 匹配任意找不到的时候跳转的页面
+- redirect 定义重定向
 ```js
 const routes = [
     {
