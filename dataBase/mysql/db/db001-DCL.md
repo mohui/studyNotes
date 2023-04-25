@@ -1,5 +1,26 @@
 # mysql
 - 在mysql中,用户信息,用户权限信息,存放在系统数据库mysql的user表中
+
+### 查询所有数据库
+```sql
+show database;
+```
+
+### 查询当前数据库
+```sql
+select DATABASE()
+```
+
+### 使用
+```sql
+use 数据库名
+```
+
+### 分区
+```sql
+ALTER TABLE 表名 ADD PARTITION (PARTITION dtx_app_dowmload VALUES IN ("DTX_APP_DOWNLOAD"));
+```
+
 ### 查询用户
 ```sql
 use mysql;
