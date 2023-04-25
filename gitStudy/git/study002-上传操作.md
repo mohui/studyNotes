@@ -1,15 +1,15 @@
 # git 命令
 1. 查看git版本
 ```bash
-git --version
+gitStudy --version
 ```
 2. 查看远程分支信息
 ```bash
-git remote -v
+gitStudy remote -v
 ```
 3. 移除远程分支信息,删除关联的origin的远程库
 ```bash
-git remote rm origin
+gitStudy remote rm origin
 ```
 
 # github的应用

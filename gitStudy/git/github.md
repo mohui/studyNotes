@@ -4,5 +4,5 @@
 
 ##  查看版本号
 ```yaml
-git --version
+gitStudy --version
 ```

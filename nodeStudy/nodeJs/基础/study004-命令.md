@@ -13,7 +13,7 @@ node -v
 [nvm地址](https://github.com/nvm-sh/nvm#installing-and-updating)安装
 ### 克隆
 ```yaml
-git clone https://github.com/nvm-sh/nvm#installing-and-updating
+gitStudy clone https://github.com/nvm-sh/nvm#installing-and-updating
 ```
 ### 进入nvm目录中执行install.sh
 ```markdown
