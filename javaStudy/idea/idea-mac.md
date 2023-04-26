@@ -12,6 +12,11 @@
 展开目录: Editor -> File Encodings
 ```
 
+### kotlin转java
+```
+Tools -> Kotlin -> Show Kotlin Bytecode
+```
+
 ### Translation: 翻译插件 
 ```markdown
 快捷键:  command + ,
