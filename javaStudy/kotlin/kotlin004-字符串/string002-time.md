@@ -88,3 +88,12 @@ val lastMinutesTime = LocalTime.now().plusMinutes(1) // 12:00
 // 秒的加法 -> 加59秒
 val lastMinutesTime = LocalTime.now().plusSeconds(59)  // 12:00:59
 ```
+
+```
+val s = LocalDate.now()
+// 减一天
+val e = LocalDate.now().minusDays(1)
+val a0 = s.isAfter(s) // false
+val a1 = s.isAfter(e) // true
+val a2 = e.isAfter(s) // false
+```
