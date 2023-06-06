@@ -4,3 +4,5 @@
 账号:163邮箱
 密码: (格式)首字母大写
 ```
+[chatGPT](https://platform.openai.com/apps)
+
