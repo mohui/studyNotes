@@ -6,3 +6,4 @@
 ```
 [chatGPT](https://platform.openai.com/apps)
 
+[openAI](https://platform.openai.com/apps)
