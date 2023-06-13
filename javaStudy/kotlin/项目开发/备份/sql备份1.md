@@ -13,14 +13,47 @@
 
 
 ```
-val updateFields = Identity.forInsert(
-            identityId
-        ).apply {
-            // 是否删除
-            this.phone = null
-            this.updatedAt = OffsetDateTime.now()
-            this.updatedBy = AppSecurityUtil.currentUserId()
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Controller
+import org.springframework.util.StringUtils
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+
+@SpringBootApplication
+class Application
+
+fun main(args: Array<String>) {
+    runApplication<Application>(*args)
+}
+
+@Controller
+class UploadController {
+
+    @PostMapping("/upload")
+    @ResponseBody
+    fun handleFileUpload(@RequestParam("file") file: MultipartFile): ResponseEntity<String> {
+        if (file.isEmpty) {
+            return ResponseEntity.badRequest().body("No file uploaded")
         }
-        val updateResult = identityTable.update(updateFields)
+
+        val fileName = StringUtils.cleanPath(file.originalFilename!!)
+        val uploadDir = "/path/to/uploads" // 指定上传文件的目录
+
+        try {
+            val path: Path = Paths.get(uploadDir).resolve(fileName)
+            Files.copy(file.inputStream, path)
+
+            return ResponseEntity.ok().body("File uploaded successfully")
+        } catch (e: Exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload file")
+        }
+    }
+}
 
 ```
