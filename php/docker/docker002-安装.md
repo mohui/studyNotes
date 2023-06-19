@@ -13,19 +13,23 @@ services:
       - 80:80
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./code:/var/www/html
-
+      - ./html:/usr/share/nginx/html
+      - ./logs/nginx:/var/log/nginx
   php:
     image: php:latest
+    restart: always
+    container_name: php-fpm
     volumes:
-      - ./code:/var/www/html
+      - ./html:/var/www/html
+    stdin_open: true
+    tty: true
 
   mysql:
     image: mysql:latest
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
-      MYSQL_ROOT_PASSWORD: your_mysql_password
+      MYSQL_ROOT_PASSWORD: 1234qwer
     volumes:
       - ./mysql_data:/var/lib/mysql
 ```

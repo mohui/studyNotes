@@ -78,5 +78,30 @@ docker run    --name my-php-container -p 80:80 -v /Users/wanghehui/projects/xzmP
 #### 访问 PHP 应用程序：在浏览器中访问 http://localhost:8080，即可查看 PHP 环境的信息。
 
 
+```
 
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./code:/var/www/html
+
+  php:
+    image: php:latest
+    volumes:
+      - ./code:/var/www/html
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234qwer
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+```
 
