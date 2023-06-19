@@ -1,18 +1,18 @@
-23¡¢Ê¹ÓÃDocker Compose¿ìËÙ´î½¨Ò»¸öWordPress²©¿Í
+23ï¿½ï¿½Ê¹ï¿½ï¿½Docker Composeï¿½ï¿½ï¿½Ù´î½¨Ò»ï¿½ï¿½WordPressï¿½ï¿½ï¿½ï¿½
 	* https://docs.docker.com/samples/wordpress/
 
 
-25¡¢Docke Compose´î½¨Nacos¼¯Èº
+25ï¿½ï¿½Docke Composeï¿½î½¨Nacosï¿½ï¿½Èº
 * https://github.com/nacos-group
 * 
-Docker Compose | ²ËÄñ½Ì³Ì (runoob.com)
+Docker Compose | ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ (runoob.com)
 * 
 Quick Start for Nacos
 
 
-26¡¢Docker Compose´î½¨ELK
+26ï¿½ï¿½Docker Composeï¿½î½¨ELK
 	* https://github.com/deviantony/docker-elk
 
-27¡¢Docker´î½¨portainerGitHub - portainer/portainer: Making Docker and Kubernetes management easy.
+27ï¿½ï¿½Dockerï¿½î½¨portainerGitHub - portainer/portainer: Making Docker and Kubernetes management easy.
 
-28¡¢Docker´î½¨Harborhttps://github.com/goharbor/harbor
+28ï¿½ï¿½Dockerï¿½î½¨Harbor https://github.com/goharbor/harbor
