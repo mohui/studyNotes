@@ -9,3 +9,5 @@ https://www.kotlincn.net/docs/reference/sequences.html
 
 
 [maven中心仓库](https://search.maven.org/)
+
+[maven中心仓库跳转到](https://central.sonatype.com/?smo=true)
