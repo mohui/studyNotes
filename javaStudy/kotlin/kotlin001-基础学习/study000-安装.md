@@ -7,7 +7,10 @@
 ## 文档地址
 https://www.kotlincn.net/docs/reference/sequences.html
 
+[查看版本号](https://mvnrepository.com/artifact/me.danwi.sqlex/core)
 
-[maven中心仓库](https://search.maven.org/)
+[maven中心仓库查看版本号](https://search.maven.org/)
 
 [maven中心仓库跳转到](https://central.sonatype.com/?smo=true)
+
+
