@@ -42,3 +42,6 @@ JobRunr将启动后台作业服务器，用于处理后台作业的执行。默�
 
 `org.jobrunr.miscellaneous.allow-anonymous-data-usage`：指定是否允许匿名数据使用。如果设置为true，
 JobRunr将发送成功作业的数量用于营销目的。默认值为true。
+
+
+var aTime = targetDateTime?: ZonedDateTime.of(2023, 7, 3, 16, 27, 0, 0, ZoneId.systemDefault())

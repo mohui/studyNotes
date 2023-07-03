@@ -97,3 +97,8 @@ val a0 = s.isAfter(s) // false
 val a1 = s.isAfter(e) // true
 val a2 = e.isAfter(s) // false
 ```
+
+## ZonedDateTime 类型时间
+```
+var aTime = targetDateTime?: ZonedDateTime.of(2023, 7, 3, 16, 27, 0, 0, ZoneId.systemDefault())
+```
