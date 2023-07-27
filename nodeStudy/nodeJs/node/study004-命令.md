@@ -15,6 +15,7 @@ node -v
 ```yaml
 gitStudy clone https://github.com/nvm-sh/nvm#installing-and-updating
 ```
+
 ### 进入nvm目录中执行install.sh
 ```markdown
 直接把install.sh文件拖入终端回车
@@ -47,7 +48,6 @@ export NVM_DIR="$HOME/.nvm"
 # This loads nvm bash_completio
 
 ```
-
 
 ## 安装corepack
 >从 v16.13 开始，Node.js 发布了 Corepack 来管理包管理器。 这是一项实验性功能，因此您需要通过运行如下脚本来启用它：

@@ -13,7 +13,6 @@ npm config get registry
 npm config set registry=https://registry.npm.taobao.org/
 ```
 
-
 #### npm安装到 `devDependencies`
 - 只在开发阶段用  上线阶段不用的安装到这个里面
 ```yarn
@@ -44,8 +43,6 @@ nrm ls
 nrm use taobao
 ```
 
-
-
 > 包后面的数字 如1.12.3
 > 第一位数字， 大版本， 第二位数字： 功能版本， 第三位数字： bug修复版本
 > 只要前面的数字增长了  后面的数字就要归零
@@ -56,7 +53,7 @@ nrm use taobao
 必须在项目根目录  且必须是叫`package.json`
 
 #### 创建`package.json`
-- 只能在英文目录下成功运行， 不能出现中文和空格. 
+- 只能在英文目录下成功运行， 不能出现中文和空格.
 - 在执行命令的目录中， 快速创建 `package.json`文件
 ```yarn
 npm init -y
