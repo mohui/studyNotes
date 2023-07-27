@@ -54,8 +54,12 @@ alter table book drop index idx_cmt;
 drop index idx_cmt on book;
 ```
 
-#### `explain`: 是否用了索引
+### 强制使用索引
+> 索引名为 `idx_name_age_position`
+#### FORCE INDEX
 ```sql
-explain select * from mr_health_plan where kn_id = 1572467224327749632;
-
+-- 这条sql可能会不用索引
+select * FROM TABLE where name > '张三' and age = 18 and position = 'bj';
+--强制让它用索引`idx_name_age_position`
+select * FROM TABLE FORCE INDEX (idx_name_age_position) where name > '张三' and age = 18 and position = 'bj'
 ```
