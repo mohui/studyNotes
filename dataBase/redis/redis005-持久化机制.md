@@ -31,4 +31,3 @@ no-enviction: 禁止驱逐数据
 
 使用key指令可以扫出制定模式的key列表
 
-redis是单线程
