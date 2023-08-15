@@ -1,12 +1,12 @@
 # redis 数据类型
-#### 五大基本数据类型
+## 五大基本数据类型
 - string(字符串)
 - list(链表)
 - set(集合)
 - hash
 - Zset
 
-#### 三种特殊数据类型
+## 三种特殊数据类型
 - geo
 - hyperloglog
 - bitmap
@@ -61,7 +61,7 @@ get key1 // hxxlo,word
 setex key3 30 "hello"
 // 如果mykey不存在, 创建mykey
 setnx mykey "redis"
-// 如果mykey存在,创建失败
+// 如果mykey存在,创建失败,上面已经创建了mykey, 所以这个会失败
 setnx mykey "mysql"
 ```
 ### `mset`: 批量设置
@@ -86,6 +86,7 @@ get db
 // 再次设置db,会返回 redis
 getset db mongodb
 ```
+
 ## list
 > 1. 在redis中, 我们可以把list完成`栈`,队列,阻塞队列
 > 2. 所有的list命令,都是以`l`开头
@@ -162,5 +163,63 @@ linsert mylist before word whh
 ```
 
 ## set
-## hash
+> set中的值是无序不重复集合
+> 所有的set命令,都是以`s`开头
+
+#### `sadd`: set集合中添加元素 `sadd myset "hello"`
+#### `smembers`: 查看制定set的所有值 `SMEMBERS myset`
+#### `sismember`:判断某一个值是不是在set集合中  `SISMEMBER myset hello`
+> 如果在会返回1,不在返回0
+#### `scard`: 获取set集合中元素个数 `scard myset`
+#### `srem`: 移除set集合中的制定元素 `srem myset hello`
+#### `srandmember`: 随机抽选出一个元素 `SRANDMEMBER myset`
+```
+// 随机抽选出一个元素
+SRANDMEMBER myset
+// 随机抽选出制定个数的元素
+SRANDMEMBER myset
+```
+#### `spop`: 随机删除一些set集合中的元素 `spop myset`
+#### `smove`:将一个制定的值,移动到另外一个set集合中 `smove set1 set2 set1中的元素`
+- `smove myset myset2 hello`: 把set1中的元素hello移动到set2中,前提是set1和set2都存在
+
+#### `SDIFF`: 差集 `SDIFF set1 set2`
+#### `SINTER`: 交集 `SINTER set1 set2`
+#### `SUNION`: 并集 `SUNION set1 set2`
+```
+// set1元素为[a,b,c],set2元素为[c,d,e]
+SDIFF set1 set2 // 差集结果为 [a,b]
+SINTER set1 set2 // 交集结果为 [c]
+SUNION set1 set2 // 并集结果为 [a,b,c,d,e]
+```
+
+## hash(哈希)
+> 1. map集合 key-map.这个值是一个map集合
+> 2. 本质和string类型没有太大区别,还是一个劲简单的key-value
+> 3. 仅仅是比string多了一层,hash是`obj = {id: 1}`, string是`id = 1`
+> 4. 所有的hash命令,都是以`h`开头
+
+> hash变更的数据 user, name, age尤其是用户信息之类的, 经常变动的信息, hash更适合于对象的存储, string更加适合字符串存储
+> 
+
+#### `hset`: set一个具体 key-value  `hset myhash field1 hello`
+#### `hget`: 获取一个字段值 `hget myhash field1`
+#### `hmset`: set多个 key-value  `hmset myhash field1 wang field he`
+#### `hmget`: 获取多个字段值 `hmget myhash field1 field2`
+#### `hgetall`: 获取全部的数据 `hgetall myhash`
+#### `hdel`: 删除hash制定的key字段,对应的value值也就消失了 `hdel myhash field1`
+#### `hlen`: 获取制定hash表的字段数量 `hlen myhash`
+#### `Hexists`: 判断hash中制定字段是否存在 `HEXISTS myhash field1`
+#### `hkeys`: 只获得hash所有的key `hkeys myhash`
+#### `hvals`: 只获得hash所有的value `hvals myhash`
+#### `HINCRBY`: 指定增量1 `Hincrby myhash field3 1`
+- `Hincrby myhash field3 -1`: 会减去1
+#### `hsetnx`: 如果不存在: 设置, 存在: 不能设置 `hsetnx myhash field4 hello`
+```
+// 如果不存在设置成功
+hsetnx myhash field4 hello
+// 如果存在设置失败, 又设置了field4,所以会失败
+hsetnx myhash field4 word
+```
+
 ## Zset
