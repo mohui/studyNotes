@@ -40,6 +40,28 @@
 > 8. res.sendFile  ( )，返回文件。 
 > 9. res.sendStatus( )，返回状态。
 
+### express中如何获取路由的参数？
+
+> 执行的命令如下
+```
+/users/：name
+```
+> 使用 req.params.name来获取；
+> 使用req.body.username来获得表单传入参数 username；
+> express的路由支持常用通配符有？、+、*、( )。
+
+### express  response有哪些常用方法？
+
+> 1. res. download( )，弹出文件下载。 
+> 2. res.end ( )，结束响应。 
+> 3. res.json( )，返回json。 
+> 4. res.jsonp( )，返回 jsonp。 
+> 5. res .redirect ( )，重定向请求。 
+> 6. res .render ( )，渲染模板。 
+> 7. res.send ( )，返回多种形式数据。 
+> 8. res.sendFile  ( )，返回文件。 
+> 9. res.sendStatus( )，返回状态。
+
 ### 说说线程与进程的区别。
 
 > 1. 一个程序至少有一个进程，一个进程至少有一个线程
